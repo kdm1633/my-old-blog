@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>에버노트(Evernote)에 코드를 붙여넣을 때 글꼴이 변경되는 문제</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2018-05-16 03:51:35</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">에버노트(Evernote)에 코드를 붙여넣을 때 글꼴이 변경되는 문제</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div>탑코더에서 문제를 풀고 나서 에버노트에 정리할 때 코드를 복사해 붙여넣는데 어느 업데이트 시점 이후로 글꼴이 monaco가 아닌 다른 글꼴로 변경되어 저장 되었다. 수작업으로 일일이해오다 우연찮게 마우스 오른쪽 버튼을 클릭하고 서식 제거를 실수(?)로 눌렀는데 마법같이 monaco 글꼴로 변경 되었다. 허.. 참. <span style="font-size: 9pt;">코드를 복사할 때 해당 글꼴에 맞게 변경되어 복사되고 있었던 것이다.</span></div><div><span style="font-size: 9pt;"><br></span></div><div>이런 걸 보면 멍청하다고 해야할 지 아니면 실수에 감사하다고 해야할 지 참 알 수가 없다. 하하</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

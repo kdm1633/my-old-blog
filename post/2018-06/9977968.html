@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Champagne</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2018-06-12 18:03:29</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Champagne</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Champagne.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Champagne</div><div>{</div><div>&nbsp; &nbsp; public String howMuch(int height, int glass, int units) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int B = 1 &lt;&lt; height-1;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int i=0,j=0,n,d;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int[][] amount = new int[21][21];</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; amount[0][0] = units*B;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; loop:</div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (i=0; i &lt;= height; i++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (j=0; j &lt;= i; j++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int f = amount[i][j]-2*B;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(f &gt; 0) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; amount[i+1][j] += f/2;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; amount[i+1][j+1] += f/2;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; amount[i][j] = 2*B;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; glass--;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(glass == 0) break loop;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; n = amount[i][j];</div><div>&nbsp; &nbsp; &nbsp; &nbsp; d = 2*B;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if(n==0) return "0/1";</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if(n==d) return "1/1";</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; while(n%2==0 &amp;&amp; d%2==0) {n/=2; d/=2;}</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return n + "/" + d;</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;-en-clipboard:true;">Explanation</span></div><div><br></div><div>먼저 amount[0][0] 에 현재 가지고 있는 포도주의 양(units * B)을 대입한다. 여기서 B는 한 잔의 반을 채우는 양이다.</div><div>현재 잔(f)에는 amount[i][j] - 2*B에 값을 넣는다. 2*B는 한 잔의 양이다. 남은 포도주가 있다면 (즉, f&gt;0이라면) 밑에 있는 두 개의 잔(i+1,j and i+1,j+1)에는 f/2 즉, 2등분해서 각각 넣어준다.</div><div>2*B 를 뺀 나머지를 밑에 &nbsp;두 잔에 넣었으므로 amount[i][j] 에는 2*B가 남아 있게 된다.</div><div><br></div><div>n에 최근까지 포도주를 부은 잔(amount[i][j]) 를 넣고, d에 포도주 한 잔 양(2*B)을 넣는다.</div><div>n==0 이면 지정한 잔까지 포도주가 채워지지 못했다는 뜻이므로 0/1 을 반환한다. n==d 이면 정확히 한 잔 분량이 들어간 것이므로 1/1 을 반환한다.</div><div><br></div><div>while문은 분수를 약분한다.</div><div><br></div><div><br></div><div><b><font style="font-size: 14pt;">References</font></b></div><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=270505&amp;rd=4472&amp;pm=1525">https://community.topcoder.com/stat?c=problem_solution&amp;cr=270505&amp;rd=4472&amp;pm=1525</a></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

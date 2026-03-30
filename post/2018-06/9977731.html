@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>ExerciseMachine</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2018-06-08 18:21:24</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">ExerciseMachine</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/ExerciseMachine.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div>public class ExerciseMachine {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public int getPercentages(String time) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int total = Integer.parseInt(time.substring(0, 2)) * 60 * 60</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Integer.parseInt(time.substring(3, 5)) * 60</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Integer.parseInt(time.substring(6, 8));</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int count = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= 99; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (total*i % 100 == 0)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count++;</div><div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;"><br></span></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return count;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Problem</span></div><div><br></div><div>매초마다 운동 기구에 있는 펌웨어의 함수가 호출되고 이 함수는 전체 운동량의 퍼센트를 출력해야 한다. 운동 기구의 화면은 소수점을 표시하지 못하므로 소수점이 붙지 않는 퍼센트만 출력해야 한다. 기구는 0% 또는 100%를 출력해서는 안된다.</div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Explanation</span></div><div><br></div><div>매초마다 workout time에 대한 퍼센트를 출력한다. %에&nbsp;소수점(decimal point)이 붙으면 출력하지 않는다.&nbsp;따라서 1%, 2%, ... , 100% 로 출력하게 되고 각 퍼센트가 소수점이 나온다면(0.1%, 0.01% 등등) 해당 값은 출력할 수가 없다. %값을 얻으려면 1/100을 곱해줘야 한다. 즉, 소수점 둘째자리(0.00)가 최대이므로 mod 100을 해 나머지가 0이면 출력한다.</div><div><br></div><div>위 코드의 공식은 gdd(s,100) - 1이다.</div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm145">https://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm145</a></div><div><br></div></span></div></span></div></span></div></span></div></span></div></span></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

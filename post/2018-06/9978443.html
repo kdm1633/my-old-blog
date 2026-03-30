@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>FaceFinder</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2018-06-22 04:24:11</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">FaceFinder</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/FaceFinder.java" style="">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>import java.util.LinkedList;</div><div>import java.awt.Point;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>public class FaceFinder</div><div>{</div><div>&nbsp; &nbsp; int[][] m;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; void floodfill(int x, int y)</div><div>&nbsp; &nbsp; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int[] dx = {0,0,1,-1};</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int[] dy = {1,-1,0,0};</div><div>&nbsp; &nbsp; &nbsp; &nbsp; LinkedList&lt;Point&gt; q = new LinkedList&lt;Point&gt;();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; q.add(new Point(x,y));</div><div>&nbsp; &nbsp; &nbsp; &nbsp; m[y][x]=1;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; while (q.size()!=0) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Point p = q.poll();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(int i=0; i&lt;4; i++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x = p.x+dx[i];</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y = p.y+dy[i];</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (x&gt;=0 &amp;&amp; y&gt;=0 &amp;&amp; x&lt;=402 &amp;&amp; y&lt;=402 &amp;&amp; m[y][x]==0) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; q.add(new Point(x,y));</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m[y][x]=1;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; public int howMany(String[] lines) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int faces=0;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; m = new int[403][403];</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int i=0; i &lt; lines.length; i++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; String[] s = lines[i].split(" ");</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int x1 = 4*Integer.parseInt(s[0]), y1 = 4*Integer.parseInt(s[1]);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int x2 = 4*Integer.parseInt(s[2]), y2 = 4*Integer.parseInt(s[3]);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int dx = x2-x1, dy = y2-y1;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(dx&gt;0) dx=1; if(dx&lt;0) dx=-1; if(dy&gt;0) dy=1; if(dy&lt;0) dy=-1;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; while (x2!=x1 || y2!=y1) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m[y1+1][x1+1]=1;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(x2!=x1) x1+=dx; if(y2!=y1) y1+=dy;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m[y1+1][x1+1] = 1;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int i=0; i &lt;= 400; i++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int j=0; j &lt;= 400; j++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (m[i][j] == 0) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; faces++;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; floodfill(j,i);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return faces;</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;-en-clipboard:true;">Explanation</span></div><div><br></div><div><img src='./9978443/a0322389_5b2bfb99b821c.png'></div><div><br></div><div><div>배열의 테두리에 있는 칸들은 무한한 영역으로 치부한다.</div><div><br></div><div>위 좌표평면에서 X표시를 5개로 나눠진 작은 1칸에만 할 경우 영역 구분이 불가능하므로 각 x1,y1,x2,y2 에 4를 곱해준다 (4배가 탐색할 수 있는 최소배수이다). 예를 들어, "0 0 1 1"이면 대각선인 (1,1) (5,5)까지의 영역인 배열 요소에 1로 표시한다((0,0)부터 표시를 안해주는 이유는 (0,0)이 무한한 영역이기 때문이다).</div><div><br></div><div>m[i][j] == 0 인 i,j가 있다면 해당 요소는 구분된 영역이므로 faces++ 해준다. 그 후 floodfill() 함수를 통해 i,j 근처의 0인 영역을 상하좌우 방향으로 전부 찾아 1로 바꾸어준다.</div></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=269554&amp;rd=4491&amp;pm=1657">https://community.topcoder.com/stat?c=problem_solution&amp;cr=269554&amp;rd=4491&amp;pm=1657</a></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

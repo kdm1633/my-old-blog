@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Robot</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2018-06-18 17:10:49</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Robot</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Robot.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Robot {</div><div>&nbsp; &nbsp; static int[] dx = {-1,&nbsp; 0,&nbsp; 1,-1, 1, -1, 0, 1 };</div><div>&nbsp; &nbsp; static int[] dy = {-1, -1, -1, 0, 0,&nbsp; 1, 1, 1 };</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; public int getProb(String[] floor, int x, int y, int time) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int rx = 0;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int ry = 0;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int cx=0; cx&lt;floor[0].length(); cx++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int cy=0; cy&lt;floor.length; cy++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (floor[cy].charAt(cx)=='R') {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; rx=cx;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ry=cy;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; int sx = floor[0].length();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int sy = floor.length;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; double[][] cp = new double[sx][sy];</div><div>&nbsp; &nbsp; &nbsp; &nbsp; cp[rx][ry]=1;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int t=0; t&lt;time; t++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; double[][] np = new double[sx][sy];</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int cx=0; cx&lt;sx; cx++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int cy=0; cy&lt;sy; cy++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int nmoves=0;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int d=0; d&lt;8; d++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int nx = cx+dx[d];</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int ny = cy+dy[d];</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (nx&lt;0 || nx&gt;=sx) continue;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (ny&lt;0 || ny&gt;=sy) continue;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (floor[ny].charAt(nx)=='X') continue;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (floor[cy].charAt(nx)=='X' || floor[ny].charAt(cx)=='X') continue;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; np[nx][ny]+=cp[cx][cy]/8;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nmoves++;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; np[cx][cy]+=(cp[cx][cy]*(8-nmoves))/8;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cp=np;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return (int)(cp[x][y]*1000);</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;-en-clipboard:true;">Explanation</span></div><div><br></div><div>핵심은 "해당 위치에 도달하는 성공 확률"이 아닌 "12.5%로 움직이는 확률"을 저장한다는 것이다. 이동 방향이 있으면 그 자리(nx,ny)에 1/8을 더하고, 없으면 8 - (부동 방향)을 해당 자리(cx, cy)에 더한다. 모든 확률을 저장하므로 결과값은 정확하다.</div><div><br></div><div><br></div><div><b><font style="font-size: 14pt;">References</font></b></div><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=114853&amp;rd=4497&amp;pm=1583">https://community.topcoder.com/stat?c=problem_solution&amp;cr=114853&amp;rd=4497&amp;pm=1583</a><br></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

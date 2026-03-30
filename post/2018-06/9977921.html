@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>QuipuReader</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2018-06-11 16:52:35</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">QuipuReader</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span><div style="-en-clipboard:true;"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/QuipuReader.java" style="">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div>01 public class QuipuReader</div><div>02 {</div><div>03 &nbsp; &nbsp; public int[] readKnots(String[] knots) {</div><div>04 &nbsp; &nbsp; &nbsp; &nbsp; int m = knots.length;</div><div>05 &nbsp; &nbsp; &nbsp; &nbsp; int n = knots[0].length();</div><div>06</div><div>07 &nbsp; &nbsp; &nbsp; &nbsp; boolean[] f = new boolean[50], g = new boolean[50];</div><div>08</div><div>09 &nbsp; &nbsp; &nbsp; &nbsp; for (int i=0; i &lt; m; i++) {</div><div>10 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int j=0; j &lt; n; j++) {</div><div>11 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(j!=0 &amp;&amp; knots[i].charAt(j)=='X' &amp;&amp; knots[i].charAt(j-1)=='X') f[j]=true;</div><div>12 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(knots[i].charAt(j)=='X') g[j]=true;</div><div>13 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>14 &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>15</div><div>16 &nbsp; &nbsp; &nbsp; &nbsp; for(int j=0; j &lt; n; j++) if(!g[j]) f[j]=true;</div><div>17</div><div>18 &nbsp; &nbsp; &nbsp; &nbsp; int[] res = new int[m];</div><div>19</div><div>20 &nbsp; &nbsp; &nbsp; &nbsp; for (int i=0; i &lt; m; i++) {</div><div>21 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int j=0; j &lt; n; j++) {</div><div>22 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(!f[j]) res[i] *= 10;</div><div>23 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(knots[i].charAt(j) == 'X') res[i] += 1;</div><div>24 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>25 &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>26</div><div>27 &nbsp; &nbsp; &nbsp; &nbsp; return res;</div><div>28 &nbsp; &nbsp; }</div><div>29 }</div></div><div><br></div><div><br></div><div><div><span style="font-weight: bold; font-size: 14pt;">Explanation</span></div></div><div><br></div><div>09번 for문은 주어진 문장이 두 개의 연속된 'X'를 가질 경우와 한 개의 'X'를 가질 경우를 각각 boolean배열에 표시한다. 두 가지로 나눈 이유는 두 개 이상의 연속된 'X'들 중 제일 첫 번째 'X'에 false를 설정해 22번에 결과값에 10씩 곱하기 위해서이다. 단일 'X'는 따로 표시할 수가 없으므로 따로 boolean 배열에 표시해둔다. 그리고 16번 for문을 이용해 false인 자리가 있다면 f배열에 true로 설정해 단일 'X'를 표시한다. 단일 'X' 앞은 항상 false이기 때문에 22번 조건식을 건너뛰어 10을 곱하지 않고 그대로 res[i]에 1을 저장한다.</div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=305142&amp;rd=4580&amp;pm=1694">https://community.topcoder.com/stat?c=problem_solution&amp;cr=305142&amp;rd=4580&amp;pm=1694</a></div><div><br></div></div></span></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
