@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>ArithmeticSequenceDiv1</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-12-21 05:36:25</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">ArithmeticSequenceDiv1</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/ArithmeticSequenceDiv1.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class ArithmeticSequenceDiv1 {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public int findMinCost(int[] x) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int n = x.length;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int min = 10000;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int maxGap = 0;</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n-1; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(Math.abs(x[i+1]-x[i]) &gt; maxGap) maxGap = Math.abs(x[i+1]-x[i]);</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int d = -maxGap; d &lt;= maxGap; d++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int a = -200; a &lt;= 200; a++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int sum = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int yi = a;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n; i++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum += Math.abs(yi-x[i]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yi += d;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(sum &lt; min) min = sum;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br style="font-family: Monaco; font-size: 9pt;" /></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return min;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 18.6667px; font-weight: 700;">Problem</span></div><div><br></div><div>등차수열인 배열 x가 주어진다. 그러나 어딘가 모자란(?) 부분이 있는 등차수열이기에 정상적인 등차수열 y로 바꿔줘야 한다. 이 때 x와 y의 각 항의 차의 절대값은 최소값이여야 한다.</div><div><br></div><div><br></div><div><span style="font-weight: bold;"><font style="font-size: 14pt;">Explanation</font></span></div><div><br></div><div><b>[maxGap을 찾는 for문]</b></div><div><br></div><div>공차의 최대 범위를 찾는다.</div><div><br></div><div>다른 사람들의 답을 몇 개 봤는데 전부 공차값을 -100에서 100을 주었다. x 원소값 범위가 1~100이기 때문에 공차가 100을 넘어서면 각 절대값이 차이가 크게 나기 때문인 것 같다. 나는 x의 i와 i+1항의 차가 가장 큰 값(maxGap)을 범위로 설정했는데 실행해보니 잘 돌아갔다. 예제들 속 i와 i+1의 차가 일률적이었기 때문에 그렇게 정했다. 아마도 다들 추측해서 범위를 정하지 않았을까 싶다.</div><div><br></div><div><b>[min을 찾는 for문]</b></div><div><br></div><div>a값의 범위가 -200 ~ 200인 것은 x원소값 범위를 기준으로 대강 준 것이다. -50 ~ 200으로 줘도 잘 돌아간다.&nbsp;</div><div>sum에 각 항의 차의 절대값을 저장하고 최소값인 min과 비교하고 min보다 작으면 min에 sum값을 넣어준다.</div><div><br></div><div><br></div><div>曰 : 사실 주어진 예제만 가지고는 미세하게 일일이 따져서 알고리즘을 짤 수가 없다. 이런 류의 문제는 점수를 얻으려면 성능이 조금 느려도 러프하게 풀어야 된다는 걸 깨달았다. 물론 대회가 끝나고는 최적화를 해야겠지만.</div><div><br></div><div><div>참고:&nbsp; &nbsp; <a href="https://www.topcoder.com/2018-tco-algorithm-round-2a-editorials/" target="_blank">O(n<sup>2</sup> log n) 실행시간 알고리즘</a></div></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

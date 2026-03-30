@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Rochambo</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-05-27 05:04:39</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Rochambo</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Rochambo.java" target="_blank">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Rochambo {</div><div>&nbsp; &nbsp; public int wins(String opponent) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int w=0;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; if(opponent.charAt(0) == 'S') w++;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if(opponent.charAt(1) == 'S') w++;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int i=2; i &lt; opponent.length(); i++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; char c;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(opponent.charAt(i-2) != opponent.charAt(i-1)) c = (char)('R' + 'P' + 'S' - opponent.charAt(i-1) - opponent.charAt(i-2));</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; else c = opponent.charAt(i-1);</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(c == opponent.charAt(i)) w++;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return w;</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">Explanation</span></div><div><br></div><div>※ 손 모양을 이기는 손 모양이 아닌 opponent와 같은 것으로 c에 대입하고 마지막에 비교해서 같으면 w를 증가시킬 수 있다. 이기는 손 모양을 대입하는 것보다 훨씬 효율적으로 코드를 짤 수 있다.</div><div><br></div><div>if문:</div><div>첫 번째와 두 번째 모두 주먹(R)을 내므로 opponent의 첫 번째, 두 번째 값이 가위(S)면 w를 증가시킨다.</div><div><br></div><div>for문:</div><ol><li><div>전판 손 모양과 전전판 손 모양이 다를 경우</div><div>그 다음 나올 손 모양은 앞의 두 개의 것과는 달라야 한다. "'R' + 'P' + 'S' - 전판 손 모양 - 전전판 손 모양"을 적용하면 당연히 남은 한 개의 손모양이 나오게 된다.</div><div><br></div></li><li><div>같을 경우</div><div>opponent의 손모양을 그대로 대입한다.</div></li></ol><div><br></div><div>opponent의 현재값과 c가 일치하면 w를 증가시킨다.</div><div><br></div><div><br></div><div><span style="font-size: 19px; font-weight: bold;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=144400&amp;rd=4620&amp;pm=1810">https://community.topcoder.com/stat?c=problem_solution&amp;cr=144400&amp;rd=4620&amp;pm=1810</a></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

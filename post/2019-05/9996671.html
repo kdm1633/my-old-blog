@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Scale</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-05-14 06:04:14</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Scale</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><div><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Scale.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Scale</div><div>{</div><div>&nbsp; &nbsp; public String[] scale(int x, int y, String[] image) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int m = image.length;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; int n = image[0].length();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; char[][] big = new char[y*m][x*n];</div><div>&nbsp; &nbsp; &nbsp; &nbsp; String[] sol = new String[y];</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; for(int i=0; i &lt; y; i++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sol[i] = "";</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; for(int i=0; i &lt; m; i++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; for(int j=0; j &lt; n; j++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; for(int k=y*i; k &lt; y*(i+1); k++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; for(int l=x*j; l &lt; x*(j+1); l++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; big[k][l] = image[i].charAt(j);</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int i=0; i &lt; y; i++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for (int j=0; j &lt; x; j++) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; double sum=0;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(int k=m*i; k &lt; m*(i+1); k++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(int l=n*j; l &lt; n*(j+1); l++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sum += big[k][l];</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sol[i] += (char)(sum/(m*n) + 0.5);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return sol;</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Explanation</span></div><div><br></div><div>y*image.length, x*image[0] 크기의 big 배열을 만든다. big 배열에 다음과 같이 image 배열값을 대입해준다.</div><div><br></div><hr /><div><span style="color: rgb(50, 135, 18);">// 확장한 배열(big[][])에 image 배열 값을 대입한다.</span></div></div><div>for(int i=0; i &lt; m; i++)</div><div>for(int j=0; j &lt; n; j++)</div><div>for(int k=y*i; k &lt; y*(i+1); k++)</div><div>for(int l=x*j; l &lt; x*(j+1); l++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;big[k][l] = image[i].charAt(j);</div><hr /><div><br></div><div>x*y 크기에 맞춰 해당하는 big 배열의 값을 sum에 더하고 m*n으로 나눠주고 반올림이기 때문에 0.5를 더한다. 이 값을 통해 한 칸의 문자값을 표현할 수 있다.</div><div><br></div><div><br></div><div><span style="font-size: 19px; font-weight: bold;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=307638&amp;rd=5002&amp;pm=2294">https://community.topcoder.com/stat?c=problem_solution&amp;cr=307638&amp;rd=5002&amp;pm=2294</a></div><div><br></div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

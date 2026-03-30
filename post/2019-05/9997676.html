@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Inchworm</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-05-28 18:46:31</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Inchworm</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Inchworm.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Inchworm {</div><div>&nbsp;&nbsp; &nbsp;public int gcd(int a, int b) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;return b==0 ? a : gcd(b,a%b);</div><div>&nbsp;&nbsp; &nbsp;}</div><div><br></div><div>&nbsp; &nbsp; int lcm(int a, int b) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;return a*b / gcd(a,b);</div><div>&nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; public int lunchtime(int branch, int rest, int leaf) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; return branch/lcm(rest,leaf) + 1;</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><font style="font-size: 14pt;"><span style="font-size: 14pt; font-weight: bold;">Explanation</span></font></div><div><br></div><div>처음에는 for문을 이용해 i값에 계속 leaf를 더한 후, i%rest == 0 이면 결과값을 올리는 방식을 사용했다. 여기서 생각해낸 더 효율적인 방식은 최소공배수(least common multiple)를 사용하는 것이었다. rest와 leaf가 첫번째로 같은 수가 바로 최소공배수이고, 이 값을 branch로 나누면 애벌레(worm)가 나뭇잎(leaf)을 몇 개 먹었는지 알 수 있다. 출발 지점에서 하나 먹고 시작하기 때문에 결과값에 +1을 해준다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

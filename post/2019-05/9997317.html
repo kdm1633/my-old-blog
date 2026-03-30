@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Commision</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-05-24 01:15:33</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Commision</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Commission.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Commission</div><div>{</div><div>&nbsp; &nbsp; public double equivalentSales(double sales, double cost, double commission) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; return sales * (100 - 20 - cost) / (100 - commission - cost);</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><font style="font-size: 14pt;"><b>Explanation</b></font></div><div><br></div><div>※ 계산의 편리함을 위해 %를 소수점으로 표시하지 않고 그대로 표시한다.</div><div><br></div><hr /><div>saleswoman일 때 판매자의 수익 = sales1 * (100 - 20 - cost)&nbsp;</div><div>salesman일 때 판매자의 수익 = sales2 * (100 - commission - cost)</div><hr /><div><br></div><div>판매자가 동일한 수익을 얻기 위해서는 위의 두 식이 같아야 하므로</div><div><br></div><hr /><div>sales1 * (100 - 20 - cost) &nbsp;=&nbsp;sales2 * (100 - commission - cost)</div><hr /><div><br></div><div>(100 - commission - cost) 을 양 식에 나눠주면 salesman일 때의 판매량 즉, sales2가 나오게 된다.</div><div><br></div><hr /><div>sales2 = sales1 * (100 - 20 - cost) &nbsp;/ (100 - commission - cost)</div><hr /><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Swimmers</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-08-30 12:19:34</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Swimmers</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><div><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Swimmers.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div>public class Swimmers</div><div>{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public int[] getSwimTimes(int[] distances, int[] speeds, int current) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] res = new int[distances.length];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=0; i &lt; distances.length; i++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(distances[i] == 0) res[i] = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if(speeds[i] &lt;= current) res[i] = -1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else res[i] = (int)((double)distances[i]/(speeds[i]+current) + (double)distances[i]/(speeds[i]-current));</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return res;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div><div><span style="font-family: Monaco;"><br></span></div><div style="box-sizing: border-box; margin: 0px; padding: 0px; font-size: medium; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><br></div><div style="box-sizing: border-box; margin: 0px; padding: 0px; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span style="font-weight: bold; font-size: 14pt;">Explanation</span></div><div style="box-sizing: border-box; margin: 0px; padding: 0px; font-size: medium; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><br style="box-sizing: border-box;" /></div><div style="text-align: start;">distances변수 바로 앞에 double형을 선언해야 정확한 계산이 가능하다.</div><div style="text-align: start;"><br></div><div style="text-align: start;"><br></div><div><font style="font-size: 14pt;"><span style="font-size: 14pt; font-weight: bold;">References</span></font></div><div><br></div><div><a href="https://community.topcoder.com/stat%3Fc%3Dproblem_solution%26cr%3D110079%26rd%3D4650%26pm%3D1888">https://community.topcoder.com/stat?c=problem_solution&amp;cr=110079&amp;rd=4650&amp;pm=1888</a></div><div><br></div></span></div></span></div></span></div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

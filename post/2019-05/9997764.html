@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>UserId</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-05-29 18:50:09</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">UserId</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/UserId.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class UserId</div><div>{</div><div>&nbsp; &nbsp; String[] iu;</div><div><br></div><div>&nbsp; &nbsp; String delch(String s) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;return s.replace(" ","").replace("'","");</div><div>&nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; boolean chkNotInUse(String s) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int i=0; i &lt; iu.length; i++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (s.equals(iu[i])) return false;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return true;</div><div>&nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; public String id(String[] inUse, String first, String middle, String last) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; iu = inUse;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; first = delch(first); middle = delch(middle); last = delch(last);</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; if (first.length()&lt;2 || last.length()&lt;2) return "BAD DATA";</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; first = first.toLowerCase(); middle = middle.toLowerCase(); last = last.toLowerCase();</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; char[] c = (first + middle + last).toCharArray();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; for (int i=0; i &lt; c.length; i++)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;if (c[i]!=' ' &amp;&amp; c[i]!='\'' &amp;&amp; !(c[i]&gt;='A' &amp;&amp; c[i]&lt;='z')) return "BAD DATA";</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; String s = "" + first.charAt(0) + last;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if (s.length() &gt; 8) s = s.substring(0,8);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if (chkNotInUse(s)) return s;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; if (middle.length() != 0) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; s = "" + first.charAt(0) + middle.charAt(0) + last;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (s.length() &gt; 8) s = s.substring(0,8);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (chkNotInUse(s)) return s;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; s = "" + first.charAt(0) + last;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if (s.length() &gt; 6) s = s.substring(0,6);</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=1; i &lt; 10; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (chkNotInUse(s+"0"+i)) return s+"0"+i;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i=10; i &lt; 51; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (chkNotInUse(s+i)) return s+i;</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return "BAD DATA";</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><b><font style="font-size: 14pt;">Explanation</font></b></div><div><br></div><div><div>delch()</div><div>문자열에서 공백과 '를 제거한 후 반환</div><div><br></div><div>chkNotInUse()</div><div>InUse 배열에 해당 string이 있으면 false, 없으면 true</div><div><br></div><div>id()</div><ol><li>"BAD DATA" 확인</li><li>세 가지 조건을 차례로 확인</li></ol><div><br></div><div>세 가지 조건에 해당하지 않으면 BAD DATA를 반환한다.</div></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>DivideByZero</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-05-29 06:24:42</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">DivideByZero</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/DivideByZero.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>import java.util.Arrays;</div><div>import java.util.HashSet;</div><div><br></div><div>public class DivideByZero</div><div>{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public int CountNumbers(int[] numbers) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashSet&lt;Integer&gt; paper = new HashSet&lt;Integer&gt;();</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i : numbers) paper.add(i);</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int old = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (paper.size() &gt; old) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;old = paper.size();</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashSet&lt;Integer&gt; clone = (HashSet)paper.clone();</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int a : clone)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int b : clone)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (a&gt;b) paper.add(a/b);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return paper.size();</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div><div><br></div><div><br></div><div><font style="font-size: 14pt;"><span style="font-size: 14pt; font-weight: bold;">Explanation</span></font></div><div><br></div><div>※ Set을 그대로 사용시 수정된 Set으로 for문을 돌리게 되고&nbsp;java.util.ConcurrentModificationException 오류가 발생한다. 따라서 Set을 얕게 복사하는 clone을 사용한다.</div><div><br></div><div>중복값이 없도록 Set: paper를 만들어 numbers 배열의 모든 값을 넣는다. 이전 paper가 현재 paper보다 크기가 작다면 현재 paper에 새로운 값이 추가됐다는 뜻이므로 while문은 계속 반복된다. 이전 paper가 현재&nbsp;paper와 크기가 같다면 새로운 값이 추가되지 않았단 뜻이므로 while문은 종료되고 현재 paper의 크기를 반환한다.</div><div><br></div><div>List로도 구현가능하다. 대신에 a/b값이 있는지 없는지를 확인하기 위해,&nbsp; if (a&gt;b &amp;&amp; !paper.contains(a/b)) 를 추가해야 한다.</div><div><br></div><div><br></div><div><b><font style="font-size: 14pt;">References</font></b></div><div><br></div><div><a href="https://apps.topcoder.com/wiki/display/tc/SRM+610">https://apps.topcoder.com/wiki/display/tc/SRM+610</a></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

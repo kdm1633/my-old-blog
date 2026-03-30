@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>BadClock</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2019-11-19 23:22:23</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">BadClock</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/BadClock.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class BadClock</div><div>{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public double nextAgreement (String trueTime, String skewTime, int hourlyGain) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double tSec = Double.parseDouble(trueTime.substring(0,2))*3600 + Double.parseDouble(trueTime.substring(3,5))*60 + Double.parseDouble(trueTime.substring(6));</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double sSec = Double.parseDouble(skewTime.substring(0,2))*3600 + Double.parseDouble(skewTime.substring(3,5))*60 + Double.parseDouble(skewTime.substring(6));</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double sum = (hourlyGain &lt; 0) ? sSec - tSec : tSec - sSec;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (sum &lt; 0) sum += 43200;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#328712">// 12 hours are 43,200 seconds.</font></div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Math.abs(sum / hourlyGain);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><span style="font-size: 9pt; font-family: Monaco;">}</span></div></div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Explanation</span></div><div><br></div><div>실제 시간(trueTime)과 꼬인 시간(skewTime)의 차를 시간당 얻는 초(hourlyGain)로 나눠준다. 작은 시간에서 큰 시간을 뺄 때 음수가 나오므로 이 경우만 처리해주면 된다. 실제 시간과 꼬인 시간 둘 다 초로 바꾼 후 두 시간의 차를 구한다. 차가 음수이면 43200초를 더해준다. 시계의 최대 시는 12이기 때문이다.</div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
