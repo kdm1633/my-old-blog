@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>이글루스에서 Mathjax 왼쪽 정렬 사용하기</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-03-04 14:47:07</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">이글루스에서 Mathjax 왼쪽 정렬 사용하기</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div>일반적으로는 $$ 나 \[ \] 사용시 가운데 정렬이 되어있다. 마음에 안들어서 계속 찾은 끝에 명령어를 발견했다!</div><div><br></div><div>스크립트 부분을 다음처럼 수정하면 된다.</div><div><br></div><div><div>&lt;script type="text/javascript" &nbsp;src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"&gt; &lt;/script&gt;</div><div>&lt;script type="text/x-mathjax-config"&gt; MathJax.Hub.Config({ tex2jax: {inlineMath: [['$\$$','<span style="line-height: 15.6000003814697px; font-size: 9pt;">$\$$</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">'], ['$\$\$$','$\$\$$']]}, displayAlign: "left"}); &lt;/script&gt;</span></div></div><div><br></div><div>야호!!</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

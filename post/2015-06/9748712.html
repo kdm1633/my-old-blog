@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>기본 틀</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-06-05 18:14:30</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">기본 틀</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><font face="Arial Black" size="5">Summary</font><hr color="gray" size="5" /></div><div><br></div><div><br></div><div><br></div><div><br></div><div><div><pre style="line-height: 20px; padding: 9.5px; font-family: Monaco, Menlo, Consolas, 'Courier New', monospace; font-size: 13px; color: rgb(51, 51, 51); border-radius: 4px; margin-top: 0px; margin-bottom: 10px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.14902); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; background-color: rgb(245, 245, 245);"><b>MIN-HEAPIFY(A,i)</b><br>l = LEFT(i)<br>r = RIGHT(i)<br>if l ≤ A.heap-size and A[l] &lt; A[i]<br>   smallest = l<br>else smallest = i<br>if r ≤ A.heap-size and A[r] &lt; A[largest]<br>   smallest = r<br>if smallest ≠ i<br>   exchange A[i] with A[smallest]<br>   MIN-HEAPIFY(A, largest)</pre><div>기호 : ⌊⌋ ⌈⌉</div></div></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><font face="Arial Black" size="5">Exercises</font></div><hr color="gray" size="5" /><br><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><font face="Arial Black" size="5">References</font><br></div><hr color="gray" size="5" /><br><a href="http://clrs.skanev.com/" target="_blank">http://clrs.skanev.com/</a><br><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

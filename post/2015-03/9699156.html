@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>1의 보수, 2의 보수 계산</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-03-26 13:04:02</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">1의 보수, 2의 보수 계산</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div>2진수<span class="Apple-tab-span" style="white-space:pre"></span>1100</div><div>1의 보수<span class="Apple-tab-span" style="white-space:pre"></span>0011</div><div>2의 보수<span class="Apple-tab-span" style="white-space:pre"></span>0100</div><div><br></div><div>1의 보수 구하기</div><div>2진수에서 0을 1로, 1을 0으로 바꾸면 된다.</div><div><br></div><div>2의 보수 구하기</div><div><b>①</b> <span style="line-height: 15.6000003814697px; font-size: 9pt;">1의 보수 + 1</span></div><div><b>②</b>&nbsp;2진수<span style="line-height: 15.6000003814697px; font-size: 9pt;">의 오른쪽 끝에서부터 시작하여 처음으로 1이 나온 자리 다음 자리부터 보수화(0-&gt;1, 1-&gt;0)</span></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

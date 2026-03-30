@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>5.1 The hiring problem</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-02-22 22:13:47</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">5.1 The hiring problem</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div>한 회사가 Agency를 통해 직원을 고용하려고 한다. 알고리즘은 다음과 같다.</div><div><br></div><div><div><pre style="padding: 9.5px; font-family: Monaco, Menlo, Consolas, 'Courier New', monospace; font-size: 13px; border-radius: 4px; margin-top: 0px; margin-bottom: 10px; line-height: 20px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.14902); background-color: rgb(245, 245, 245);"><span style="color: rgb(51, 51, 51);">HIRE-ASSISTANT(n)<br>1 best = 0 </span><font color="#009900">// candidate 0 is a least-qualified dummy candidate</font><font color="#333333"><br>2 for i = 1 to n<br>3    interview candidate i<br>4    if candidate i is better than candidate best<br>5       best = i<br>6       hire candidate i<br></font></pre></div></div><div><br></div><div><div><font size="2">총 비용 : O(c<sub>i</sub>n +&nbsp;</font><span style="font-size: small; line-height: 15.6000003814697px;">c</span><sub style="line-height: 15.6000003814697px;">h</sub><span style="font-size: small; line-height: 15.6000003814697px;">m</span><font size="2">) &nbsp;&nbsp;<font color="#009900">//</font></font><font color="#009900"><span style="font-size: small; line-height: 15.6000003814697px;">c</span><sub style="line-height: 15.6000003814697px;">i</sub><span style="font-size: small; line-height: 15.6000003814697px;">n</span><font size="2">은 항상 발생.</font></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font face="Arial Black" size="2">Worst-case analysis</font></div><div><font size="2"><br></font></div><div><font size="2">총 고용 비용 : O(<span style="line-height: 15.6000003814697px;">c</span><sub style="line-height: 15.6000003814697px;">h</sub><span style="line-height: 15.6000003814697px;">n</span>) &nbsp;&nbsp;<font color="#009900">//문제발생 : interviewer가 들어오는 순서는 항상 오름차순일 순 없다.</font></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2" face="Arial Black">Probabilistic analysis</font></div><div><font size="2"><br></font></div><div><font size="2">모든 입력에 관한 평균을 구해야 한다.</font></div><div><font size="2"><br></font></div><div><ul><li><b style="font-size: small; line-height: 15.6000003814697px;">total order<br><span style="font-weight: normal; line-height: 15.6000003814697px;">reflexive, antisymmetric, transitive, including total relation(a R b or b R a (or both)).<br><br></span></b></li><li><b style="font-size: small; line-height: 15.6000003814697px;"><span style="line-height: 15.6000003814697px;"><span style="line-height: 15.6000003814697px;">uniform random permutation<br><span style="font-weight: normal; line-height: 15.6000003814697px;">each of the possible n! permutations appears with equal probability.</span><br><br></span></span></b></li></ul></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2" face="Arial Black">Randomized algorithms</font></div><div><font size="2"><br></font></div><div><font size="2">면접자가 무작위로 들어온다고 가정하는 대신에 에이전시에서 보내주는 무작위로 선택된 면접자 목록을 받는다.</font></div><div><font size="2"><br></font></div><div><font size="2">RANDOM(a,b) : a와 b 사이의 숫자들 중 무작위로 하나를 선택해 반환한다.</font></div></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2"><hr /><br></font></div><div><font face="Arial Black" size="4">Exercises</font></div><div><font size="2"><br></font></div><div><br></div><div><font size="2" face="Verdana"><div>5.1-1</div><div>Show that the assumption that we are always able to determine which candidate is&nbsp;<span style="line-height: 15.6000003814697px;">best, in line 4 of procedure HIRE-ASSISTANT, implies that we know a total order </span><span style="line-height: 15.6000003814697px;">on the ranks of the candidates.</span></div></font></div><div><br></div><div>total order 조건을 만족하면 주어진 가정은 성립한다. relation을 "is better than" 이라고 가정하자.</div><div><ul><li>reflexive : 모든 개인은 자기 자신과 비교하면 고용이 된다. a R a<br><br></li><li>antisymmetric : b가 a보다 우월하지만 a는 b보다 우월하지 않는다. b R a but not b R a<br><br></li><li>transitive : b가 a보다 우월하고 c가 b보다 우월하면 c는 a보다 우월하다.</li></ul></div><div>세 가지 성질을 모두 만족하므로 total order가 성립한다.</div><div><br></div><div><br></div><div><br></div><div><font size="2" face="Verdana"><div>5.1-2 ★</div><div>Describe an implementation of the procedure RANDOM(a, b) that only makes calls&nbsp;<span style="line-height: 15.6000003814697px;">to RANDOM(0, 1). What is the expected running time of your procedure, as a&nbsp;</span><span style="line-height: 15.6000003814697px;">function of a and b?</span></div></font></div><div><font size="2"><br></font></div><div><font size="2">reference :&nbsp;<a href="http://stackoverflow.com/questions/8692818/how-to-implement-randoma-b-with-only-random0-1" target="_blank">http://stackoverflow.com/questions/8692818/how-to-implement-randoma-b-with-only-random0-1</a></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font face="Verdana"><font size="2"><div>5.1-3&nbsp;<span style="line-height: 15.6000003814697px;">★</span></div></font><font size="2"><div>Suppose that you want to output 0 with probability 1/2 and 1 with probability 1/2.&nbsp;<span style="line-height: 15.6000003814697px;">At your disposal is a procedure BIASED-RANDOM, that outputs either 0 or 1. It&nbsp;</span><span style="line-height: 15.6000003814697px;">outputs 1 with some probability p and 0 with probability 1 - p, where 0 &lt; p &lt; 1,&nbsp;</span><span style="line-height: 15.6000003814697px;">but you do not know what p is. Give an algorithm that uses BIASED-RANDOM&nbsp;</span><span style="line-height: 15.6000003814697px;">as a subroutine, and returns an unbiased answer, returning 0 with probability 1/2&nbsp;</span>and 1 with probability 1/2. What is the expected running time of your algorithm&nbsp;<span style="line-height: 15.6000003814697px;">as a function of p?</span></div></font></font></div><div><br></div><div>알고리즘</div><div><ol><li>(0,1) 숫자에서 무작위로 a와 b를 생성한다.<br><br></li><li>a와 b가 같지 않으면 a를 반환한다.<br><br></li><li>a와 b가 같으면 1로 돌아가 문장을 재수행한다.</li></ol></div><div>역 또한 이와 같으므로 확률은 p(1-p) + p(1-p) = 2p(1-p) 이다.</div><div><br></div><div>예상 실행시간 : O(1 / p(1-p) )</div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

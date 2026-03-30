@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>알고리즘 문제를 풀고 있다</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-04-28 01:02:01</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">알고리즘 문제를 풀고 있다</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div>탑코더, 알고스팟, 백준 온라인 저지에서 알고리즘을 풀기 시작했다.</div><div><br></div><div>당초 계획했던 것보다 훨씬 늦게 들어가는 거라서 아쉽지만 이제부터라도 열심히 풀어야 겠다.</div><div><br></div><div>실제로 코드를 구현해서 답을 제출하고 타인의 답과 비교해볼 수 있다는 점이 굉장히 좋다.</div><div>( 타인의 최적화된 코드를 보고 나서 내 코드를 보니 허접함에 부끄러움이 밀려온다. -_-; )</div><div><br></div><div>CRLS를 공부하는 것보다 재미있다.</div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

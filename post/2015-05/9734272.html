@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>6.1 Heaps</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-05-18 20:52:08</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">6.1 Heaps</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><font face="Arial Black" size="5">Summary</font></div><div><hr color="gray" size="5" /></div><div></div><div><br></div><font size="4"><b>Heapsort</b></font><div><br></div><div>(binary) heap 자료구조는 거의 완전한 이진트리로 볼 수 있는 배열 객체이다. (그림 6.1)</div><div><ul><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">실행 시간:</span><span class="Apple-tab-span" style="font-size: 9pt; line-height: 15.6000003814697px; white-space: pre;"></span><span style="font-size: 9pt; line-height: 15.6000003814697px;">O(n lg n)</span></li><li>정렬 방식:<span class="Apple-tab-span" style="white-space:pre"></span>in-place ( 새로운 배열의 공간 할당 없이 배열 내에서 정렬되는 방식)</li><li>설계 기술<br>1. heap data structure<br>2. priority queue</li></ul><div><br></div><div><img src='./9734272/a0322389_55560c9167c61.png'></div><div><b>그림 6.1</b><span class="Apple-tab-span" style="white-space:pre"></span>(a) 이진 트리와 (b) 배열로 보여지는 max-heap</div><div><br></div><div><br></div><div><b>(max-heap) ith-node의 parent, left, right index 구하기</b></div><div><div><pre style="padding: 9.5px; font-family: Monaco, Menlo, Consolas, 'Courier New', monospace; font-size: 13px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; margin-top: 0px; margin-bottom: 10px; line-height: 20px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.14902); background-color: rgb(245, 245, 245);">PARENT(i)<br>   return ⌊i/2⌋<br><br>LEFT(i)<br>   return 2i<br><br>RIGHT(i)<br>   return 2i+1<br></pre></div><br></div><div><b>bianry heap의 두 종류</b></div><div><ul><li>max-heaps property<br><font size="4">A[PARENT(i)] ≥ A[i]</font><br><br></li><li>min-heaps property<br><span style="line-height: 15.6000003814697px;"><font size="4">A[PARENT(i)] ≤ A[i]</font></span></li></ul></div><div><br></div><div>heapsort 알고리즘을 사용할 때, 대게 max-heap를 사용한다.</div><div><br></div><div><br></div></div><div><br></div><div><br></div><div><br></div><div><div style="line-height: 15.6000003814697px;"><font face="Arial Black" size="5">Exercises</font></div><div style="line-height: 15.6000003814697px;"><hr color="gray" size="5" /></div><div style="line-height: 15.6000003814697px;"></div></div><div><br></div><div><div><b>6.1-1</b></div><div>What are the minimum and maximum numbers of elements in a heap of height h?</div></div><div><ul><li>maximum numbers :&nbsp;<font size="4">2<sup>h+1</sup>-1</font><br><span style="font-size: 9pt; line-height: 15.6000003814697px;">minimum numbers :&nbsp;</span><span style="line-height: 15.6000003814697px;"><font size="4">2<sup>h</sup></font></span></li></ul></div><div><br></div><div><br></div><div><br></div><div><br></div><div><div><b>6.1-2</b></div><div>Show that an n-element heap has height ⌊lg n⌋.</div></div><div><br></div><div><div>Since it is balanced binary tree&nbsp;<span style="font-size: 9pt; line-height: 15.6000003814697px;">the height of a heap&nbsp;</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">is clearly O(lg n),&nbsp;</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">but the problem asks for an exact&nbsp;</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">answer.</span></div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;">The height is defined as the number of edges in the&nbsp;</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">longest simple path from the root.</span></div></div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div></div><div><img src='./9734272/a0322389_5556642db7a1f.png'></div><div><br></div><div>The number of nodes in a complete balanced binary tree of height h is 2<sup>h+1</sup>-1. Thus the height increases only when 2<span style="line-height: 15.6000003814697px; font-size: 9pt;"><sup>⌊lg n⌋</sup></span><span style="font-size: 9pt; line-height: 15.6000003814697px;">, or in other words when lg n is an integer.</span></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><div><b>6.1-3</b></div><div>Show that in any subtree of a max-heap, the root of the subtree contains the largest&nbsp;<span style="font-size: 9pt; line-height: 15.6000003814697px;">value occurring anywhere in that subtree.</span></div></div><div><br></div><div><div><ul><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">This follows from the max-heap property.<br></span><span style="font-size: 9pt; line-height: 15.6000003814697px;">If the ith element is the root of the subtree, then both its children would be less or equal to it. Since this properties holds for their children too and it is transitive, all of the descendents will be less or equal to the root, making it the largest value.</span></li></ul></div></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><div><b>6.1-4</b></div><div>Where in a max-heap might the smallest element reside, assuming that all elements&nbsp;<span style="font-size: 9pt; line-height: 15.6000003814697px;">are distinct?</span></div><div><br></div><div><ul><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">In any of the leaves, that is, elements with index ⌊n/2⌋+1 (see exercise 6.1-7), that is, in the second half of the heap array.</span></li></ul></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><b>6.1-5</b></div><div>Is an array that is in sorted order a min-heap?</div></div><div><br></div><div><ul><li>Yes, it is.&nbsp;For any index i, both LEFT(i) and RIGHT(i) are larger and thus the elements indexed by them are greater or equal to A[i] (because the array is sorted (sorted array example : 1,2,3,4,5,6 ...) ).</li></ul></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><div><b>6.1-6</b></div><div>Is the array with values &lt;23, 17, 14, 6, 13, 10, 1, 5, 7, 12&gt; a max-heap?</div></div><div><br></div><div><ul><li>No. In the figure below, 7 is not less than or equal to the value of parent.<br><br><img src='./9734272/a0322389_5559d5525eb58.png'></li></ul></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><div><b>6.1-7</b></div><div>Show that, with the array representation for storing an n-element heap, the leaves&nbsp;<span style="font-size: 9pt; line-height: 15.6000003814697px;">are the nodes indexed by&nbsp;</span><span style="line-height: 15.6000003814697px;">⌊n/2⌋</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">&nbsp;+ 1,&nbsp;</span><span style="line-height: 15.6000003814697px;">⌊n/2⌋ +&nbsp;</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">2, ... , n.</span></div></div><div><br></div><div><ul><li>Let's take the left child of the node indexed by ⌊n/2⌋+1.<br><br>LEFT(<span style="line-height: 15.6000003814697px;">⌊n/2⌋+1</span>) = 2<span style="line-height: 15.6000003814697px;">⌊n/2⌋+2 &gt; 2(n/2-1)+2 = n</span><br><br>Since the index of the left child is larger than the number of elements in the heap, the node doesn't have children and thus is a leaf. Same goes for all nodes with larger indices.</li></ul></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><div style="line-height: 15.6000003814697px;"><font face="Arial Black" size="5">References</font></div><div style="line-height: 15.6000003814697px;"><hr color="gray" size="5" /></div><div style="line-height: 15.6000003814697px;"></div></div><div><br></div><div><a href="http://clrs.skanev.com/" target="_blank">http://clrs.skanev.com/</a></div><div><br></div><div><a href="https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture6.1.pdf" target="_blank">https://www.cs.duke.edu/~reif/courses/alglectures/skiena.lectures/lecture6.1.pdf</a></div><div><br></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Online photo Editor</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-03-25 17:57:26</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Online photo Editor</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><br></div><div><a href="http://apps.pixlr.com/editor/" target="_blank">http://apps.pixlr.com/editor/</a></div><div><br></div><div>집에 포토샵이 없거나 간단한 작업을 하고 싶을 때, 이용하면 된다.</div><div><br></div><div>한글메뉴도 지원한다.</div><div><br></div><div><ul><li>배경 투명으로 만들기 : 마법봉(Wandtool)으로 배경을 선택한 뒤, 키보드의 Del key 또는 Edit-Clear 를 눌러주면 된다.</li></ul><div><br></div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
