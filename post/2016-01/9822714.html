@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>7.4 Analysis of quicksort</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2016-01-02 19:36:19</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">7.4 Analysis of quicksort</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><font face="Arial Black" size="5">Summary</font><hr color="gray" size="5" /></div><div><br></div><div><blockquote><i><b>Lemma 7.1</b></i><br>n개 배열을 QUICKSORT 로 수행하는 동안에, PARTITION의 4번째 줄에서 실행되는 비교횟수를 X라고 하자. 그러면 QUICKSORT 실행시간은 O(n+X) 이다.<br><br><b>proof</b><span class="Apple-tab-span" style="white-space:pre"></span><br>이 알고리즘은 PARTITION을 최대 n번 호출한다. 각각의 호출은 상수 작업량을 가지며 for 문을 여러 번 수행한다. for문 반복시 매번 4번째 줄이 실행된다.</blockquote></div><div><br></div><div><pre style="line-height: 20px; padding: 9.5px; font-family: Monaco, Menlo, Consolas, 'Courier New', monospace; font-size: 13px; color: rgb(51, 51, 51); border-radius: 4px; margin-top: 0px; margin-bottom: 10px; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; border: 1px solid rgba(0, 0, 0, 0.14902); border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; background-color: rgb(245, 245, 245);"><b>MIN-HEAPIFY(A,i)</b><br>l = LEFT(i)<br>r = RIGHT(i)<br>if l ≤ A.heap-size and A[l] &lt; A[i]<br>   smallest = l<br>else smallest = i<br>if r ≤ A.heap-size and A[r] &lt; A[largest]<br>   smallest = r<br>if smallest ≠ i<br>   exchange A[i] with A[smallest]<br>   MIN-HEAPIFY(A, largest)</pre><div><br></div></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><font face="Arial Black" size="5">Exercises</font></div><hr color="gray" size="5" /><br><div><b>7.4.1</b></div><div>Show that in the recurrence</div><div>$$ T(n) = \max_{0 \le q \le n-1} (T(q) + T(n-q-1)) + \Theta(n) $$</div><div>$$ T(n) = \Omega(n^2) $$</div><div><br></div><div><br></div><div>⇒ T(n) ≥ cn2 - 2n 이라고 추측한다.</div><div><div>\[\begin{align} T(n) &amp;= \max_{0 \le q \le n-1} (T(q) + T(n-q-1)) + \Theta(n) \\ &amp;\ge \max_{0 \le q \le n-1} (cq^2 - 2q + c(n-q-1)^2 - 2n - 2q -1) + \Theta(n) \\ &amp;\ge c\max_{0 \le q \le n-1} (q^2 + (n-q-1)^2 - (2n + 4q + 1)/c) + \Theta(n) \\ &amp;\ge cn^2 - c(2n-1) + \Theta(n) \\ &amp;\ge cn^2 - 2cn + 2c &amp; (c \le 1) \\ &amp;\ge cn^2 - 2n \end{align}\]</div></div><div><br></div><div><br></div><div><br></div><div><b>7.4.2</b></div><div>Show that quicksort's best-case running time is Ω(n lg n).</div><div><br></div><div><span style="line-height: 15.6px;">⇒</span></div><div><br></div><div>best-case는 partition이 짝수일 때 일어난다.</div><div><br></div><div>따라서, T(n) = 2T(n/2) + Θ(n)</div><div><br></div><div>마스터 정리를 사용하면, Θ(n lg n)을 얻는다.</div><div><br></div><div><br></div><div><br></div><div><br></div><div><b>7.4.3</b></div><div>Show that the expression q<sup>2</sup><span style="font-size: 9pt; line-height: 15.6px;">&nbsp;+ (n-q-1)</span><sup style="line-height: 15.6px;">2</sup><span style="font-size: 9pt; line-height: 15.6px;">&nbsp;achieves a maximum over q = 0, 1, ... , n-1 when q = 0 and q = n-1.</span></div><div><span style="font-size: 9pt; line-height: 15.6px;"><br></span></div><div><span style="line-height: 15.6px;">⇒</span></div><div><br></div><div><br></div><div><br></div><div><br></div><div><b>7.4.4</b></div><div>Show that RANDOMIZED-QUICKSORT's expected running time is Ω(n lg n).</div><div><br></div><div><span style="line-height: 15.6px;">⇒</span></div><div><span style="line-height: 15.6px;"><br></span></div><div>comparisons의 기대값에 대해서 다른 방향을 취했던 것과 같은 추론을 사용한다.</div><div><span style="line-height: 15.6px;"><br></span></div><div><div>\[\begin{align*} E[X] &amp;= \sum_{i=1}^{n-1} \sum_{j=i+1}^n \frac{2}{j-i+1} \\ &amp;= \sum_{i=1}^{n-1} \sum_{k=1}^{n-i} \frac{2}{k + 1} &amp; (k \ge 1) \\ &amp;\ge \sum_{i=1}^{n-1} \sum_{k=1}^{n-i} \frac{2}{2k} \\ &amp;\ge \sum_{i=1}^{n-1} \Omega(\lg{n}) \\ &amp;= \Omega(n\lg{n}) \end{align*}\]</div></div><div><br></div><div><br></div><div><br></div><div><br></div><div><b>7.4.5</b></div><div>We can improve the running time of quicksort in practice by taking advantage of the fast running time of insertion sort when its input is "nearly" sorted. Upon calling quicksort on a subarray with fewer than k elements, let it simply return without sorting the subarray. After the top-level call to quicksort returns, run insertion sort on the entire array to finish the sorting process. Argue that this sorting algorithm runs in O(nk + n lg (n/k)) expected time. How should we pick k, both in theory and practice?<br></div><div><br></div><div><span style="line-height: 15.6px;">⇒</span></div><div><br></div><div><br></div><div><br></div><div><br></div><div><b>7.4.6</b></div><div>Consider modifying the PARTITION procedure by randomly picking three elements from array A and partitioning about their median (the middle value of the three elements). Approximate the probability of getting at worst an α-to-(1−α) split, as a function of α in the range 0&lt;α&lt;1.</div><div><br></div><div><span style="line-height: 15.6px;">⇒</span></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><font face="Arial Black" size="5">References</font><br></div><hr color="gray" size="5" /><br><a href="http://clrs.skanev.com/" target="_blank">http://clrs.skanev.com/</a><br><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

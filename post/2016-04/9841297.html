@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Archimedes</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2016-04-08 06:51:04</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Archimedes</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Archimedes.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Archimedes {</div><div>&nbsp; &nbsp; public double approximatePi(int numSides) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; double d = 2 * Math.PI / numSides / 2;&nbsp; // 2*Math.PI is 360 degrees.</div><div>&nbsp; &nbsp; &nbsp; &nbsp; return numSides * Math.sin(d);</div><div>&nbsp; &nbsp; }</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;-en-clipboard:true;">Explanation</span></div><div><br></div><div>(반지름은 1로 가정)</div><div>원 안에 삼각형을 그린다. 원 점과 한 변의 중앙을 직선으로 그어서 작은 직각삼각형을 만든다. 원 안 쪽 각으로 sin하면 sin 60˚ = sin 1.047 (radian) = 0.866 (60도인 이유 : 원 내부는 총 360도. 3등분하면 120도. 직각으로 나눴으니 60도 이다.) 도로 계산하면 나눠지지 않는 수가 있어서 (예 : 7각형, 11각형 등등) radian으로 바꿔줘서 계산한다. 1(빗변의 길이) *&nbsp;sin 60˚ (구하려는변/빗변의길이) = 0.866 이 변의 값이 된다.</div><div>(0.866 * 2) * 3 =&nbsp;5.196152422706632 이다. 이것이 삼각형의 둘레값이다. 원주율에 대한 비를 구하는 것이므로 5.196152422706632 / 2를 하면 2.598076211353316 가 된다.&nbsp;이런 식으로 사각형, 오각형, 다각형에 대해서 값을 구해나가면 된다.</div><div><br></div><div><b>식</b>&nbsp;&nbsp; &nbsp;원 둘레(지름 * PI) &nbsp;/ 지름 = PI (원주율)</div><div><br></div><div><img src='./9841297/a0322389_5706d5fd69c27.png'></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">References</span></div><div><br></div><div><a href="https://www.youtube.com/watch?v=zUVx0TQaxME">https://www.youtube.com/watch?v=zUVx0TQaxME</a></div><div><a href="http://www.mathsisfun.com/algebra/trigonometry.html" style="font-size: 9pt;">http://www.mathsisfun.com/algebra/trigonometry.html</a></div><div><a href="http://www.math.utah.edu/~alfeld/Archimedes/Archimedes.html">http://www.math.utah.edu/~alfeld/Archimedes/Archimedes.html</a></div></div><div><br></div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

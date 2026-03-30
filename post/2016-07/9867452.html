@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>java의 List와 반복문(loop), 그리고 변수 선언 위치에 대해서</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2016-07-16 13:14:09</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">java의 List와 반복문(loop), 그리고 변수 선언 위치에 대해서</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="http://egloos.zum.com/benelog/v/1382604" target="_blank">http://egloos.zum.com/benelog/v/1382604</a></div><div><br></div><div>알고리즘 코드를 짜면서 반복문 내부에 변수를 선언하면 메모리가 낭비되지 않을까 하는 의구심이 있었다.</div><div><br></div><div>검색을 해서 이 글을 읽고 나니 컴파일러라는 녀석은 그렇게 바보(?)가 아니였다. 내가 바보였네.. 허허.</div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
