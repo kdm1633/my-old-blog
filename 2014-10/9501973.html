@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Chapter 1 : The Role of Algorithms in Computing</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-10-16 22:01:11</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Chapter 1 : The Role of Algorithms in Computing</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><font size="5">Chapter 1 : The Role of Algorithms in Computing</font><div><br></div><div>1.1 Algorithms</div><div><br></div><div>convex hull : 최소의 점으로 얼마나 많은 볼록껍질을 만들 수 있나?</div><div><font size="2" face="굴림, Gulim"><span face="돋움, dotum" style="line-height: 21.9999923706055px; color: rgb(55, 55, 55);">(관련 글 :&nbsp;</span><a href="http://yahoosir.blog.me/220066885908" style="margin: 0px; padding: 0px; border: 0px; line-height: 21.9999923706055px; cursor: pointer; color: rgb(4, 122, 198);"><span face="돋움, dotum" style="line-height: 1.571428em;">http://183.106.113.109/30stair/convex_hull/convex_hull.php?pname=convex_hull</span></a><span face="돋움, dotum" style="line-height: 21.9999923706055px; color: rgb(55, 55, 55);">)</span></font></div><div><br></div><div>NP-complete : NP에 속하는 문제들 중에서 가장 어려운 문제들의 집합을 의미</div><div>NP : Non-deterministic Polynomial time, 어떤 동일한 속성을 가지는 problems의 set</div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;">&nbsp; &nbsp; &nbsp; &nbsp;NP에서 다루는 problems는 decision problems</span></div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;">decision problems : &nbsp;결과값으로 yes/no만 가지는 problems</span></div><div>(따라서, NP-complete를 풀 수 있다면 당신은 이 글을 읽지 말고 당장 네이버나 MIT 공대에 취업 신청을 하는 게 좋을거야)</div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div><font color="#993399">曰 : 개념 소개에 이렇게 어려운 개념들을 집어넣다니... 일단 침착하자.</font></div><div><font color="#993399"><br></font></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

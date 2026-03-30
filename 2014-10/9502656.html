@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>요새 나를 쇠뇌하고 있다</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-10-17 02:49:21</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">요새 나를 쇠뇌하고 있다</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">나는 알고리즘이다, 나는 운영체제다, 나는 네트워크다, 나는 자료구조다<div><br></div><div>기계의 마음이 어떨지 조금은 알 것 같다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
