@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Eclispe - 이클립스에서 클래스명 실수</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-04-08 02:47:03</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Eclispe - 이클립스에서 클래스명 실수</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">Mahout in action 책의 챕터2 예제를 코드를 이클립스에서 실행하려고 했다.&nbsp;<div><br></div><div>그런데 아무리 실행하려고 해도 빈 콘솔창만 뜨는 것이였다.&nbsp;</div><div><br></div><div>원인이 뭘까? 코드가 문제인걸까 아니면 이클립스 또는 자바 문제인걸까...</div><div><br></div><div>한참을 헤멘 끝에 클래스명을 그대로 갖다 쓴 사실을 깨달았다.</div><div><br></div><div>내가 실행하려는 놈은 mahout.java 인데, 실제 클래스명은 RecommenderIntro 였던 것이다.</div><div><br></div><div>아... 자바에 손을 놓은 지가 오래돼서 그런지 이런 초보적인 실수를 할 줄이야... ㅠㅠ</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

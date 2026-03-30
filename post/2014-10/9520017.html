@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>처음 접하는 개념들이 많다보니 힘드네</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-10-21 06:31:43</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">처음 접하는 개념들이 많다보니 힘드네</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">학부 알고리즘 수업을 좋은 책으로 했으면 이리 고생을 안했을 거란 생각을 해본다.&nbsp;<span style="font-size: 9pt; line-height: 15.6000003814697px;">뭐, 정보처리기사에는 도움이 됐다만...</span><div><br></div><div>Θ-notation 등 각종 표기법과 constant, lower-order terms 등 개념 설명이 이루어지지 않은 상태에서 용어들만 나오니 이해가 되지 않는다. 그래서 집중력도 떨어진다.&nbsp;<span style="font-size: 9pt; line-height: 15.6000003814697px;">후우... 'ㅅ' 다시 한 번 가봐야지</span></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

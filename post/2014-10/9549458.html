@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>크롬에서 영어단어 바로 해석하기</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-10-30 04:28:57</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">크롬에서 영어단어 바로 해석하기</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div>14.04.23</div><div><span style="line-height: 15.6000003814697px;"><font color="#ff0000">※ 크롬 버전 업으로 인해서 현재 확장 프로그램이 작동되지 않습니다. 다음꼬마사전이 새로 나올 때까지 기달리셔야 될 듯 합니다.</font></span></div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;">크롬에서 모르는 단어가 나오면 예전에는 복사해서 일일이 검색을 했었다. 그런데 다음 꼬마사전을 알고 나서는 모르는 영어단어가 나오면 그 영어단어 위에 마우스 커서를 올리면 자동으로 단어 해석이 나온다.</span></div><div>엌. 문제가 생겼다. 크롬 웹스토어에서 꼬마사전이 등록되어 있었는데 사라졌다. 더 이상 지원을 하지 않는 것인가? -_-;;</div><div>어쨌든 내가 직접 다음꼬마사전 확장프로그램을 올렸다.</div><div><br></div><div><a href='http://pds26.egloos.com/pds/201410/30/89//Daum_Minidic_-_Chrome.zip' target='_blank'>Daum_Minidic_-_Chrome.zip</a></div><div><br></div><div><b style="line-height: 15.6000003814697px;">주의사항</b><span style="line-height: 15.6000003814697px;">&nbsp;: 다음 꼬마사전이 먼저 설치되어 있어야 합니다.&nbsp;</span><a href="http://dic.daum.net/littledic/littledic.do" target="_blank" style="line-height: 15.6000003814697px;">설치하러가기</a></div><div><br></div><div><img src='./9549458/a0322389_54513e50bb79d.png'></div><div style="text-align: center;"><span style="font-size: 9pt; line-height: 15.6000003814697px;">크롬 접속 - 확장프로그램 - 개발자모드 체크 - 압축해제된 확장 프로그램 로드 - 해당폴더 선택 - 끝</span></div><div style="text-align: left;"><br></div><div style="text-align: left;"><br></div><div style="text-align: left;"><img src='./9549458/a0322389_54513f9c173f9.png'></div><div style="text-align: center;"><span style="line-height: 15.6000003814697px;">설치하고 나서 chrome://plugins 가서 'Daum Example Plugin for Mozilla'를 찾고 '항상허용'에 체크해주면 끝</span></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
