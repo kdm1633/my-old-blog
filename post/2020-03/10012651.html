@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>HillHike</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2020-03-10 23:00:25</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">HillHike</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/hard/HillHike.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class HillHike</div><div>{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public long numPaths(int distance, int maxHeight, int[] _landmarks) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long[][][] cache1 = new long[2][52][51];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long[][][] cache2 = new long[2][52][51];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache1[0][0][0] = 1;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] landmarks = new int[_landmarks.length+1];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.arraycopy(_landmarks,0,landmarks,0,_landmarks.length);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;landmarks[_landmarks.length] = -1;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt; distance; i++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache2 = new long[2][52][51];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 1; j &lt;= maxHeight; j++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int ni = (j == maxHeight) ? 1 : 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int k = 0; k &lt; landmarks.length; k++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int lm = (j == landmarks[k]) ? k + 1 : k;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int d = -1; d &lt;= 1; d++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache2[ni][j][lm] += cache1[0][j+d][k];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache2[1][j][lm] += cache1[1][j+d][k];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache1 = cache2;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return cache1[1][1][landmarks.length-1];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Problem</span></div><div><br></div><div>도보 여행자가 언덕을 등반한다. 특정 거리를 가진 언덕을 높이 0인 시작점에서 올라가 높이 0인 끝점으로 내려와야 한다 (중간에 높이 0인 곳을 방문하지 않아야 한다). 최대 높이를 반드시 거쳐야 하며 최대 높이를 가진 다른 점을 중복해서 방문해도 상관은 없다. 특정 높이에 표지물(landmark)이 존재하며 이를 모두 순서대로 방문해야 한다. 언덕을 내려왔을 때 앞선 조건들을 만족하는 경우의 수를 구하라.</div><div><br></div><div>&nbsp; &nbsp; _____</div><div>&nbsp; &nbsp;/ :&nbsp;&nbsp;&nbsp;: \</div><div>&nbsp; /&nbsp; :&nbsp; &nbsp;:&nbsp; \</div><div>&nbsp;/&nbsp; &nbsp;:&nbsp; &nbsp;:&nbsp; &nbsp;\</div><div>/ 1 : 2 : 3 \</div><div><br></div><div>종류 1:&nbsp; &nbsp; 오르막길.</div><div><br></div><div>종류 2:&nbsp; &nbsp; 평지.</div><div><br></div><div>종류 3:&nbsp; &nbsp; 내리막길.</div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Explanation</span></div><div><br></div><div>동적 프로그래밍을 적용하기 위해서는 먼저 재귀식을 잘 세워야 한다.</div><div><br></div><div>f(h,d,lm,max)&nbsp; &nbsp; h는 현재 높이, d는 현재 거리, lm은 표지물, max는 최대 높이 도달 유무이다.</div><div><br></div><div>이 재귀식은 다음의 네 가지 조건을 가진다.</div><div><br></div><ul><li><div>h = maxHeight, h = landmark[lm]:</div><div>f(h,d,lm,true) = f(h,d-1,lm-1,true) + f(h-1,d-1,lm-1,true) + f(h-1,d-1,lm-1,false)</div><div>f(h,d,lm,false) = 0</div></li><li><div>h = maxHeight, h != landmark[lm]:</div><div>f(h,d,lm,true) = f(h,d-1,lm,true) + f(h-1,d-1,lm,true) + f(h-1,d-1,lm,false)</div><div>f(h,d,lm,false) = 0</div></li><li><div>h != maxHeight, h = landmark[lm]:</div><div>f(h,d,lm,max) = f(h+1,d-1,lm-1,max) + f(h,d-1,lm-1,max) + f(h-1,d-1,lm-1,max)</div><div>for max = true of false</div></li><li><div>h != maxHeight, h != landmark[lm]:</div><div>f(h,d,lm,max) = f(h+1,d-1,lm,max) + f(h,d-1,lm,max) + f(h-1,d-1,lm,max)</div><div>for max = true of false</div></li></ul><div><br></div><div>maxheight = false인 경우와 maxheight = true인 경우를 구분지으면 위 코드가 완성된다.</div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm145">https://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm145</a></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

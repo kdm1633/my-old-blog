@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Lottery</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2020-01-16 11:38:55</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Lottery</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span><div style="-en-clipboard:true;"><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/medium/Lottery.java">Code</a></div><div><br></div><div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>import java.util.Arrays;</div><div>import java.util.Comparator;</div><div><br></div><div>public class Lottery</div><div>{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;long perm(long a, long b) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long num = 1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; b; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num *= a--;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return num;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;long fact(long a) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long num = 1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 2; i &lt;= a; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num *= i;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return num;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;long cbn(long n, long r) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(r &gt; n/2) r = n-r;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long denom=1, numer=1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(r &gt; 0) {denom *= n--; numer *= r--;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return denom / numer;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;long calOutcomes(long choices, long blanks, boolean sorted, boolean unique) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long outcomes = 1;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (sorted &amp;&amp; unique)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outcomes = cbn(choices, blanks);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (sorted &amp;&amp; !unique)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outcomes = cbn(choices+blanks-1, blanks);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (!sorted &amp;&amp; unique)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outcomes = perm(choices,blanks);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (!sorted &amp;&amp; !unique)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outcomes = (long)Math.pow(choices,blanks);</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return outcomes;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;public String[] sortByOdds(String[] rules) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int n = rules.length;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arrays.sort(rules, new Comparator&lt;String&gt;() {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public int compare(String A, String B) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[] spA = A.split(":")[1].split(" ");</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int choicesA = Integer.parseInt(spA[1]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int blanksA = Integer.parseInt(spA[2]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[] spB = B.split(":")[1].split(" ");</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int choicesB = Integer.parseInt(spB[1]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int blanksB = Integer.parseInt(spB[2]);</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long outcomesA = calOutcomes(choicesA, blanksA, spA[3].charAt(0)=='T', spA[4].charAt(0)=='T');</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long outcomesB = calOutcomes(choicesB, blanksB, spB[3].charAt(0)=='T', spB[4].charAt(0)=='T');</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (outcomesA &lt; outcomesB)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return -1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (outcomesA &gt; outcomesB)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return A.compareTo(B);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[] name = new String[n];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name[i] = rules[i].split(":")[0];</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return name;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div></div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Problem</span></div><div><br></div><div>최대 숫자와 숫자를 적는 빈 칸이 각기 다른 로또 복권이 주어진다. 각각의 로또에 대한 확률을 구하고, 당첨 확률이 가장 큰 로또 순으로 정렬한 String 배열을 반환해야 한다. 확률이 같을 경우, 문자열을 비교하여 알파벳 순으로 정렬한다.</div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">Explanation</span></div><div><br></div><div>sorted와 unique의 논리값에 따라 계산을 수행한다.</div><ol><li><div>sorted &amp;&amp; unique</div><div>한 번 나온 숫자들의 집합은 다시 나올 수 없으므로 조합을 이용한다.</div></li><li><div>sorted &amp;&amp; !unique</div><div>1번과 마찬가지로 조합을 이용한다. 다른 점은 숫자의 중복을 허용한다는 점이다. 중복 숫자를 포함한 조합은 선택 가능한 숫자의 개수가 choices+blanks-1인 조합과 같다. (직접 숫자를 넣어서 비교해 보았다.)</div></li><li><div>!sorted &amp;&amp; unique</div><div>조합과 달리 이미 나온 숫자들의 집합이 순서만 다르게 해서 다시 나올 수 있다. 즉, 순열과 같다.</div></li><li><div>!sorted &amp;&amp; !unique</div><div>각 칸마다 모든 숫자를 적을 수 있으므로 결과는 choices<span style="vertical-align: super;">blanks</span>이다.</div></li></ol><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=277659&amp;rd=4515&amp;pm=1659">https://community.topcoder.com/stat?c=problem_solution&amp;cr=277659&amp;rd=4515&amp;pm=1659</a></div><div><br></div></span></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>GoldenChain</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2021-01-12 06:32:38</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">GoldenChain</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span><div style="-en-clipboard:true;"><div><br></div><div><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=1355" style="font-size: 16pt; font-weight: bold;-en-clipboard:true;"><span style="font-size: 16pt;">Problem</span></a></div><div><br></div><div>다양한 길이의 금사슬을 연결해 목걸이를 만들어야 한다. 연결시키려면, 한 사슬의 끝쪽 고리의 일부를 절단하고 이를 다른 사슬의 끝 고리에 연결하면 된다. 고리를 절단하는 횟수를 최소화해서 목걸이를 만들어라.</div><div><br></div><div><span style="font-size: 12pt; font-weight: bold;">Constraints</span></div><ul><li><div>sections의 길이는 1이상 50이하다.</div></li><li><div>sections의 요소는 1부터&nbsp;2,147,483,647이하다.</div></li><li><div>sections의 모든 요소의 합은 3이상&nbsp;2,147,483,647이하다.</div></li></ul><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">Code</span></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div>#include &lt;algorithm&gt;</div><div>#include &lt;vector&gt;</div><div><br></div><div>using namespace std;</div><div><br></div><div>class GoldenChain {</div><div>public:</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int minCuts(vector&lt;int&gt; sections) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int cuts = 0, snum = sections.size()-1;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sort(sections.begin(),sections.end());</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt;= snum; ) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (sections[i]-- &gt; 0) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--snum;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++cuts;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else ++i;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return cuts;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>};</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">Explanation</span></div><div><br></div><div>각 사슬의 길이를 가진 secitons 벡터를 정렬한다. 제일 작은 값을 가진 사슬의 고리를 잘라내고, 이를 가장 긴 길이의 사슬에 연결시킨다. 현재 사슬의 고리가 없으면 그 다음 사슬로 넘어간다.&nbsp;&nbsp;이러한 방식으로 모든 사슬을 연결해 나간다.</div><div><br></div><div><img src='./10023066/a0322389_5ffcc3d8d2aaa.gif'></div><div><br></div><div><span style="font-weight: bold;">그림 1</span>&nbsp; &nbsp; 3개의 사슬은 3개의 고리가 필요하다.</div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt;"><a href="http://www.puzzlesandriddles.com/LateralThinking07.html" style="font-size: 16pt; font-weight: bold;">Reference</a></span></div><div><br></div><div><br></div></div><div><br></div></span></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

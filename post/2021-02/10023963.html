@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>ChristmasBatteries</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2021-02-07 05:47:42</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">ChristmasBatteries</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><span style="font-size: 16pt; font-weight: bold;"><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=16717">Problem</a></span></div><div><br></div><div>건전지를 넣어 동작하는 장난감이 있다. 장난감은 총 N개, 건전지는 총 N개다. 장난감 번호는 0에서 N-1이고, i번 장난감은 (i mod 5)개 건전지를 필요로 한다. i번 장난감이 주는 즐거움(fun)의 양은 ((X*i*i + Y*i + Z) mod M)이다. 건전지 N개를 사용해 즐거움을 극대화할 수 있는 장난감 개수를 찾고, 이 때의 즐거움을 반환하라.</div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 11pt;">Constraints</span></div><ul><li>B will be between 0 and 7, inclusive.</li><li>N will be between 1 and 10^6, inclusive.</li><li>X, Y, Z will be between 0 and 999, inclusive.</li><li>M will be between 1 and 1000, inclusive.</li></ul><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">Code</span></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15); --darkreader-inline-color:#c4c0b9; --darkreader-inline-bgcolor:#2a241a; --darkreader-inline-border-top:rgba(139, 130, 116, 0.15); --darkreader-inline-border-right:rgba(139, 130, 116, 0.15); --darkreader-inline-border-bottom:rgba(139, 130, 116, 0.15); --darkreader-inline-border-left:rgba(139, 130, 116, 0.15);"><div>#include &lt;vector&gt;</div><div><br></div><div>using namespace std;<br></div><div><br></div><div>class ChristmasBatteries {</div><div>public:</div><div>&nbsp;&nbsp;&nbsp;&nbsp;int mostFun(int B, int N, int X, int Y, int Z, int M) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;int&gt; dp (B);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; N; ++i) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int ib = i % 5, fun = (1ll*X*i*i + 1ll*Y*i + Z) % M;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j = B; j &gt;= ib; --j) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[j] = max(dp[j], dp[j-ib]+fun);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; return dp[B];<br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>};</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">Explanation</span></div><div><br></div><div>0번부터 N-1번까지 장난감을 탐색하면서, dp[j]와 dp[j-ib]+fun 중 최대값을 dp[j]에 저장한다. dp[j-ib]는 (i 이전에 찾은) 건전지 j-ib개를 사용한 장난감의 최대 즐거움이다. fun은 건전지 ib개를 사용해 얻은 i번 장난감의 즐거움이다.</div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;"><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=40762016&amp;rd=18432&amp;pm=16717">Source</a></span></div><div><br></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

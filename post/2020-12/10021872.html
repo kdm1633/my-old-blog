@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>단어 퍼즐</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2020-12-06 20:48:26</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">단어 퍼즐</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><div><span style="font-size: 16pt;"><b><a href="https://programmers.co.kr/learn/courses/30/lessons/12983">문제</a></b></span></div><div><br></div><div>주어진 단어를 최소로 사용해 목표 문장을 완성하라.</div><div><br></div><div><span style="font-size: 12pt; font-weight: bold;">제한 사항</span></div><div><br></div><ul><li>strs는 사용 가능한 단어 조각들이 들어있는 배열로, 길이는 1 이상 100 이하다.</li><li>strs의 각 원소는 사용 가능한 단어조각들이 중복 없이 들어있다.</li><li>사용 가능한 단어 조각들은 문자열 형태이며, 모든 단어 조각의 길이는 1 이상 5 이하다.</li><li>t는 완성해야 하는 문자열이며 길이는 1 이상 20,000 이하다.</li><li>모든 문자열은 알파벳 소문자로만 이루어져 있다.</li></ul><div><br></div><div><span style="font-size: 12pt; font-weight: bold;">입출력 예</span></div><br><table style="width: 359px;"><colgroup><col style="width: 219px;"><col style="width: 78px;"><col style="width: 62px;"></col></col></col></colgroup><tbody><tr><td style="border: 1px solid;"><span style="font-weight: bold;">strs</span></td><td style="border: 1px solid;"><span style="font-weight: bold;">t</span></td><td style="border: 1px solid;"><span style="font-weight: bold;">result</span></td></tr><tr><td style="border: 1px solid;">["ba","na","n","a"]</td><td style="border: 1px solid;">"banana"</td><td style="border: 1px solid;">3</td></tr><tr><td style="border: 1px solid;">["app","ap","p","l","e","ple","pp"]</td><td style="border: 1px solid;">"apple"</td><td style="border: 1px solid;">2</td></tr><tr><td style="border: 1px solid;">["ba","an","nan","ban","n"]</td><td style="border: 1px solid;">"banana"</td><td style="border: 1px solid;">-1</td></tr></tbody></table><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">코드</span></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>#include &lt;algorithm&gt;</div><div>#include &lt;string&gt;</div><div>#include &lt;unordered_set&gt;</div><div>#include &lt;vector&gt;</div><div><br></div><div>using namespace std;<br></div><div><br></div><div>int dp[20001];</div><div><br></div><div>int solution(vector&lt;string&gt; strs, string t) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;unordered_set&lt;string&gt; us (strs.begin(),strs.end());</div><div>&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= t.size(); i++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i] = 20001;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 1; j &lt;= 5; j++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (i-j&lt;0) break;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (us.find(t.substr(i-j,j)) != us.end())</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i] = min(dp[i], dp[i-j]+1);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;return (dp[t.size()] == 20001) ? -1 : dp[t.size()];</div><div>}</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">풀이</span></div><div><br></div><div>문장 t를 최소 길이 1부터 최대 길이 t.size()만큼 분할해 단어를 만들어 strs의 unordered_set인 us에서 찾는다. 단어가 존재하면 dp[i]와 단어 길이만큼 뺀 값 dp[i-j] + 1 중 최소값을 dp[i]에 넣는다.</div><div><br></div><div><br></div><div><br></div><div><b><font style="font-size: 16pt;">참조</font></b></div><div><br></div><div><a href="https://deok2kim.tistory.com/124">https://deok2kim.tistory.com/124</a></div><div><br></div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

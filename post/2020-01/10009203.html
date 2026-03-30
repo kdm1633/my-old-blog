@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>PowerOutage</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2020-01-09 13:09:14</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">PowerOutage</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/hard/PowerOutage.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>import java.util.LinkedList;</div><div>import java.util.Queue;</div><div><br></div><div>public class PowerOutage</div><div>{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public int estimateTimeout(int[] fromJunction, int[] toJunction, int[] ductLength) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int n = fromJunction.length;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int sum = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int len = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] dlSum = new int[50];</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum += ductLength[i];</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Queue&lt;Integer&gt; q = new LinkedList&lt;Integer&gt;();</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.add(0);</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (q.size() != 0) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int jn = q.poll();</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n; i++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (fromJunction[i] == jn) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.add(toJunction[i]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dlSum[toJunction[i]] += dlSum[jn] + ductLength[i];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (dlSum[toJunction[i]] &gt; len) len = dlSum[toJunction[i]];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 2*sum - len;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 14pt;">Problem</span></div><div><br></div><div>아파트의 전력 공급이 중단 되는 문제가 발생하여 아파트 지하에 있는 변압기를 점검하고 필요시 고쳐야 한다. 모든 변압기를 방문하는데 걸리는 최단 시간은 얼마인가?</div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Explanation</span></div><div><br></div><div>나무(tree) 자료구조를 사용하는 문제로 입력값을 나무로 그려서 표현하면 이해하기 쉽다. 모든 변압기를 방문해야 하고 막다른 길에 도달하면 부모(parent) 또는 근(root)으로 올라간다. 가장 오랜 시간이 걸리는 경로를 제일 마지막에 방문하면 다시 돌아오지 않아도 되므로 시간을 절약할 수 있다. 따라서 모든 소요 시간은 2*sum - len이다. 2*sum은 각 경로를 두 번 왔다갔다한 시간이고 len은 가장 오래 걸리는 경로의 시간이다 (한 번만 방문하므로 2*sum에서 빼줘야 한다).</div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">References</span></div><div><br></div><div><a href="http://www.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm144">http://www.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm144</a></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

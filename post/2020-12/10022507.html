@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Dragons</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2020-12-29 02:19:13</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Dragons</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span><div style="-en-clipboard:true;"><span><div style="-en-clipboard:true;"><br></div><div><a href="https://www.topcoder.com/stat?c=problem_statement&amp;pm=1520" style="font-size: 16pt; font-weight: bold;-en-clipboard:true;"><span style="font-size: 16pt;">Problem</span></a></div><div><br></div><div>각 면에 용이 살고 있는 정육면체가 있다. 용은 음식이 담긴 그릇을 갖고 있고, 음식의 양은 면에 표시된다. 매 차례마다 다음 일이 발생한다: 용은 자기와 근접한 면에 있는 용의 음식을 1/4만큼 가지고 올 수 있다. 정육면체 위쪽에 살고 있는 용들의 대장 스노그의 최종 음식의 양을 구하고 "X/Y" 형태의 문자열로 반환하라.</div><div><br></div><div><span style="font-weight: bold; font-size: 12pt;">Constraints</span></div><ul><li><div>initialFood는 딱 6개이다.</div></li><li><div>initialFood의 원소는 0이상 1000 이하이다.</div></li><li><div>initialFood의 원소 순서는 (전, 후, 상, 하, 좌, 우)이다.</div></li><li><div>rounds는 0이상 45이하이다.</div></li></ul><div><br></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 16pt;">Code</span></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div>#include &lt;string&gt;</div><div>#include &lt;vector&gt;</div><div><br></div><div>using namespace std;</div><div><br></div><div>int adj[6][6] = {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;{0,0,1,1,1,1},</div><div>&nbsp;&nbsp;&nbsp;&nbsp;{0,0,1,1,1,1},</div><div>&nbsp;&nbsp;&nbsp;&nbsp;{1,1,0,0,1,1},</div><div>&nbsp;&nbsp;&nbsp;&nbsp;{1,1,0,0,1,1},</div><div>&nbsp;&nbsp;&nbsp;&nbsp;{1,1,1,1,0,0},</div><div>&nbsp;&nbsp;&nbsp;&nbsp;{1,1,1,1,0,0}};</div><div><br></div><div>long gcd(long a, long b) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;return (b == 0) ? a : gcd(b,a%b);</div><div>}</div><div><br></div><div>class Dragons {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public:</div><div>&nbsp;&nbsp;&nbsp;&nbsp;string snaug(vector&lt;int&gt; initialFood, int rounds) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long denom = 2;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long* num = new long[6];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; 6; ++i) num[i] = initialFood[i] * 2;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; rounds; ++i) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;denom *= 2;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long* num2 = new long[6];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 0; j &lt; 6; ++j) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int k = 0; k &lt; 6; ++k)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (adj[j][k] == 1) num2[j] += num[k];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num2[j] /= 2;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num = num2;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long snum = num[2] / gcd(num[2],denom);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long sdenom = denom / gcd(num[2],denom);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (sdenom == 1) ? to_string(snum) : to_string(snum) + '/' + to_string(sdenom);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>};</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-weight: bold; font-size: 16pt;">Explanation</span></div><div><br></div><div>마주보는 면을 제외하고 현재 면과 인접한 면은 4개이므로, 이를 배열로 구현하면 adj 2차원 배열이 나온다. 매 차례마다, 인접한 면의 음식양에 1/4을 곱한 결과값을 현재 면에 더한다. 구하는 값이 실수였으면 이대로 더해나가면 되지만 값을 분수 형태로 표현해야 하므로 다른 접근 방법이 필요하다.</div><div><br></div><div style="margin-left: 40px;">차례1:&nbsp;&nbsp; &nbsp;(a/4+b/4+c/4+d/4) = 1/4 * (a+b+c+d)</div><div style="margin-left: 40px;">차례2:&nbsp;&nbsp; &nbsp;(a/16+b/16+c/16+d/16) = 1/16 * (a+b+c+d)</div><div style="margin-left: 40px;">차례3:&nbsp;&nbsp; &nbsp;...</div><div><br></div><div>a,b,c,d는 매 차례에서 현재 면과 근접한 면의 음식양이다 (그러므로 매 차례마다 값이 바뀐다). 식을 통해 알 수 있는 사실은 1/4을 공통 인수로 뺄 수 있다는 점과, 음식양으로 주어지는 a+b+c+d가 항상 짝수란 점이다 (아래 예 참조). 분자 a+b+c+d는 짝수이고 분모 또한 짝수 4이다. 분모끼리 더해나가고 분자끼리 더해나가면 답이 나온다. 그러나 계산값이 커져 예시를 통과 못하는 문제가 생긴다. 계산값을 줄이기 위해, 분자와 분모의 최대공약수 2를 구해 분자에는 (각 면의 근접한 면을 더한 값 / 2)이고, 분모에는 4/2 = 2를 계속 곱해나가면 된다.</div><div><br></div><div>예:</div><div>0, 0, 4, 0, 0, 0</div><div>1, 1, 0, 0, 1, 1</div><div>1/2, 1/2, 1, 1, 1/2, 1/2</div><div><br></div><div>=&gt; 처음에 스너그가 살고 있는 전면에만 음식양이 있지만 다음 차례에 근접한 각 면에 살고 있는 용 4마리가 자기 면으로 음식을 4 * 1/4 만큼 가져가므로 a+b+c+d는 항상 짝수이다.</div><div><br></div><div><br></div><div><br></div><div><a href="https://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm147" style="font-weight: bold; font-size: 16pt;">Source</a></div></span><br></div></span></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

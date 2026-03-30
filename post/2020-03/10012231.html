@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Bonuses</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2020-03-02 15:53:03</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Bonuses</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><a href="https://github.com/kdm1633/Algorithms/blob/master/Topcoder/easy/Bonuses.java">Code</a></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>public class Bonuses</div><div>{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;public int[] getDivision(int[] points) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int len = points.length;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int sum = 0, extra = 100;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean[] used = new boolean[len];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] percents = new int[len];</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; len; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum += points[i];</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; len; i++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percents[i] = 100*points[i] / sum;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extra -= 100*points[i] / sum;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while (extra-- &gt; 0) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max = 0, mi = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; len; i++)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!used[i] &amp;&amp; points[i]&gt;max) {max = points[i]; mi = i;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used[mi] = true;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percents[mi]++;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return percents;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>}</div></div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Problem</span></div><div><br></div><div>고용자에게 상여금을 주기 위해, 모든 고용자의 점수에서 해당 고용자가 가진 점수의 퍼센트(소수점 절삭)를 구해 이 퍼센트로 상여금을 준다. 절삭된 소수점을 전부 더한 값이 1%가 넘으면, 제일 높은 퍼센트를 가진 고용자 순으로 1%씩 주어야 한다. 동일한 퍼센트일 경우 색인이 빠른 고용자부터 1%를 준다.</div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">Explanation</span></div><div><br></div><div>처음에 double형을 이용해 문제를 풀었는데 해설을 참고해보니 double형을 쓰지 않고도 풀 수 있었다. 바로 (points[i] / sum) * 100 에서 (100 * points[i]) / sum으로 바꿔주면 된다. extra는 100으로 설정하고 소수점을 제외한 퍼센트 100 * points[i] / sum을 빼준다. 이러면 소수점 퍼센트를 쉽게 구할 수 있다.</div><div><br></div><div><br></div><div><span style="font-size: 14pt; font-weight: bold;">References</span></div><div><br></div><div><a href="https://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm145">https://community.topcoder.com/tc?module=Static&amp;d1=match_editorials&amp;d2=srm145</a></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

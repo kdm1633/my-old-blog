@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Flags</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2021-01-20 00:11:16</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Flags</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">Problem</span></div><div><br></div><div>주어진 색으로 칠해진 세로줄을 가진 깃발을 설계해야 한다. 같은 색을 가진 줄들은 서로 인접할 수 없으며, 인접하면 안되는 색의 번호가 오름차순 forbidden 배열로 주어진다. 줄을 가장 적게 사용해 깃발을 만드는 방법을 구하라.</div><div><br></div><div><span style="font-weight: bold;"><font style="font-size: 12pt;">Constraints</font></span></div><ul><li>numFlags는 long형 크기를 가지며 1이상 10^17이하이다.</li><li>forbidden은 2이상 10이하 크기다.</li><li>forbidden 요소는 1에서 50이하 문자이며 '0'-'9' 숫자와 (' ') 공백으로 이루어진다.</li><li>forbidden 요소는 오름차순에 금지된 색의 색인을 가진다. 색인은 0이상 색의 개수 이하다.</li><li>forbidden 요소는 자신의 색인을 포함하고 대칭 관계(symmetrical relationship)를 포함한다.</li><li>모든 색의 쌍이 fobidden에서 금지되는 경우는 없다.</li></ul><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">Code</span></div><div><br></div><div style="box-sizing: border-box; padding: 8px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15); --darkreader-inline-color:#c4c0b9; --darkreader-inline-bgcolor:#2a241a; --darkreader-inline-border-top:rgba(139, 130, 116, 0.15); --darkreader-inline-border-right:rgba(139, 130, 116, 0.15); --darkreader-inline-border-bottom:rgba(139, 130, 116, 0.15); --darkreader-inline-border-left:rgba(139, 130, 116, 0.15);"><div>#include &lt;sstream&gt;</div><div>#include &lt;string&gt;</div><div>#include &lt;vector&gt;</div><div><br></div><div>using namespace std;</div><div><br></div><div>bool adj[10][10];</div><div>long long stripe_num[201][10], total[10];</div><div><br></div><div>class Flags {</div><div>public:</div><div>&nbsp;&nbsp;&nbsp;&nbsp;long long numStripes(string numFlags, vector&lt;string&gt; forbidden) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long long nf = atoll(numFlags.c_str());</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int n = forbidden.size();</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; forbidden.size(); ++i) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;istringstream fIdx (forbidden[i]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j; fIdx &gt;&gt; j; )</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj[i][j] = adj[j][i] = true;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n; ++i)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total[1] += stripe_num[1][i] = 1;</div><div><br></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nf -= total[1];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nf &lt;= 0) return 1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 2; ; ++i) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int j = 0; j &lt; n; ++j) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int k = 0; k &lt; n; ++k)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!adj[j][k]) stripe_num[i][j] += stripe_num[i-1][k];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total[i] += stripe_num[i][j];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nf -= total[i];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (nf &lt;= 0) return i;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (total[i-1] == total[i]) return i + nf/total[i];</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>};</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;">Explanation</span></div><div><br></div><div>인접하지 말아야 할 색인이 있는 forbidden 배열을 가지고 adj 인접 행렬을 만든다. nf는 만들어야 하는 깃발의 개수다. 세 번째 for문의 i는 현재 줄의 개수를 의미한다.</div><div>&nbsp; &nbsp; 한 줄만 가진 깃발은 모든 색이 가능하므로 모든 색의 개수를 total[1]에 더하고 nf에 이를 빼준다. 두 줄부터 색이 서로 겹치면 안되므로 adj를 사용해 확인 후 개수를 total[2]에 더하고 nf에 이를 빼준다. 이런 식으로 더해나가면서 답을 구하면 된다. nf가 음수가 되면 현재 색의 개수까지 사용해 깃발을 만들 수 있으므로 i를 반환한다. total[i-1]과 total[i]가 같으면 매 반복시 인접해도 되는 색의 개수가 동일하다는 뜻이므로 (i + nf/total[i])을 반환한다. 앞의 두 경우를 만족하지 못하면, 현재 색의 개수로 깃발을 만들 수 없고 다음 반복을 진행한다.</div><div><br></div><div><div><b>예1:</b>&nbsp; numFlag 10, forbidden {"0", "1 2", "1 2"}<span style="white-space:pre"></span><span style="color: rgb(50, 135, 18); font-size: 9pt; --darkreader-inline-color:#94e774;">// 0: 파랑, 1: 주황, 2: 노랑</span></div><div><br></div><div><img src='./10023361/a0322389_601a59b193516.png'></div><div><br></div><div><div>2줄부터 깃발이 2개씩 늘어가므로 nf가 0과 같거나 작을 때까지 i를 증가시킨다:</div><div><br></div><div>&nbsp;&nbsp; &nbsp;if (nf &lt;= 0) return i;</div></div><div><br></div><div><br></div><div><b>예2:</b>&nbsp; numFlag 10, forbidden {"0 1 2", "0 1", "0 2"}</div><div><br></div><div><img src='./10023361/a0322389_601a5716809c8.png'></div><div><br></div><div>파랑은 주황, 노랑과 인접할 수 없으므로 깃발에 2줄을 그릴 때 사용하지 못한다. 2줄부터 깃발의 끝 부분이 (주황,노랑), (노랑 주황)으로 끝나는 양식을 보이므로 다음 조건문에 해당한다:</div><div><br></div><div>&nbsp; &nbsp; if (total[i-1] == total[i]) return i + nf/total[i];</div><div><br></div><div>이는 깃발의 줄이 계속 늘어가도 동일한 개수의 깃발이 나온다는 것을 뜻한다. 현재 줄 수 i에 (남은 깃발 수 nf를 현재 깃발 수 total[i]로 나눈 값)을 더하면 최종적으로 구하려는 줄 수가 나오게 된다.</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16pt; font-weight: bold;"><a href="https://community.topcoder.com/stat?c=problem_solution&amp;cr=287568&amp;rd=4540&amp;pm=1206">References</a></span></div><div><br></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

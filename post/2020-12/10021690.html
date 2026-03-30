@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>트리 트리오 중간값</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2020-12-03 09:45:12</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">트리 트리오 중간값</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><div><br></div><div><a href="https://programmers.co.kr/learn/courses/30/lessons/68937" style="font-weight: bold;"><font style="font-size: 16pt;">문제</font></a></div><div><br></div><div>n개의 점으로 이루어진 트리가 있다. 이 트리의 정의는 다음과 같다.</div><div><br></div><ul><li>어떤 두 점 사이의 거리는, 두 점을 잇는 경로 상 간선의 개수로 정의합니다.</li><li>임의의 3개의 점 a, b, c에 대한 함수 f(a, b, c)의 값을 a와 b 사이의 거리, b와 c 사이의 거리, c와 a 사이의 거리, 3개 값의 중간값으로 정의합니다.</li></ul><div><br></div><div>주어진 트리에서 임의의 점 3개를 뽑아서 만들 수 있는 f값 중에서 제일 큰 값을 구하라.</div><div><br></div><div><span style="font-weight: bold;"><font style="font-size: 12pt;">입출력 예</font></span></div><br><table style="width: 311px;"><colgroup><col style="width: 49px;"><col style="width: 189px;"><col style="width: 73px;"></col></col></col></colgroup><tbody><tr><td style="border: 1px solid;"><span style="font-weight: bold;">n</span></td><td style="border: 1px solid;"><span style="font-weight: bold;">edges</span></td><td style="border: 1px solid;"><span style="font-weight: bold;">result</span></td></tr><tr><td style="border: 1px solid;">4</td><td style="border: 1px solid;">[[1,2],[2,3],[3,4]]</td><td style="border: 1px solid;">2</td></tr><tr><td style="border: 1px solid;">5</td><td style="border: 1px solid;">[[1,5],[2,5],[3,5],[4,5]]</td><td style="border: 1px solid;">2</td></tr></tbody></table><div><br></div><div><br></div><div><br></div><div><span style="font-weight: bold;"><font style="font-size: 16pt;">코드</font></span></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);"><div>#include &lt;queue&gt;</div><div>#include &lt;vector&gt;</div><div><br></div><div>using namespace std;</div><div><br></div><div>int n;</div><div>vector&lt;vector&lt;int&gt;&gt; adj;</div><div>vector&lt;int&gt; mdvv;</div><div><br></div><div>pair&lt;int,int&gt; BFS(int sv) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;int mv = 0, md = 0;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;bool&gt; visited (n+1);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;mdvv.resize(0);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;queue&lt;pair&lt;int,int&gt;&gt; q;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;q.push({sv,0});</div><div>&nbsp;&nbsp;&nbsp;&nbsp;visited[sv] = true;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;while (!q.empty()) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int v = q.front().first;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d = q.front().second;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.pop();</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (d &gt; md) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mv = v;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;md = d;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mdvv = {v};</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (d == md) mdvv.push_back(v);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int nv = 0; nv &lt; adj[v].size(); nv++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (!visited[adj[v][nv]]) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visited[adj[v][nv]] = true;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.push({adj[v][nv],d+1});</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;return {mv,md};</div><div>}</div><div><br></div><div>int solution(int _n, vector&lt;vector&lt;int&gt;&gt; edges) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;n = _n;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;adj.resize(n+1);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; edges.size(); i++) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj[edges[i][0]].push_back(edges[i][1]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adj[edges[i][1]].push_back(edges[i][0]);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;pair&lt;int,int&gt; v2 = BFS(1);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;pair&lt;int,int&gt; v3 = BFS(v2.first);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;if (mdvv.size() &gt;= 2) return v3.second;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;pair&lt;int,int&gt; v4 = BFS(v3.first);</div><div>&nbsp;&nbsp;&nbsp;&nbsp;if (mdvv.size() &gt;= 2) return v4.second;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;else if (mdvv.size() == 1) return v4.second - 1;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;return -1;</div><div>}</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-weight: bold;"><font style="font-size: 16pt;">풀이</font></span></div><div><br></div><div>트리의 지름은 트리에 있는 두 점 사이의 거리 중 최대값이다.</div><div><br></div><div>임의의 점 3개를 뽑아 만들 수 있는 중앙값을 식으로 세우면 다음과 같다.</div><div><br></div><div>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;f(a,b,c) = median(d(a,b),d(b,c),d(c,a))</div><div><br></div><div>트리의 지름을 D라고 하자. a,b를 지름의 양끝에 있는 점이라고 하고 a,b에서 인접한 점을 c라 하면 f(a,b,c)는 최소 D - 1이다. 트리의 지름이 될 수 있는 점이 두 개 밖에 없다고 가정하면, 세 점의 거리는 항상 (1, d-1, d)가 될 수 밖에 없기 때문이다. 그리고 f(a,b,c)는 D보다 클 수 없으므로 f(a,b,c) = D가 가능한 지를 알아내면 된다. 지름인 점이 두 개 이상일 때 f(a,b,c) = D가 가능하다.</div><div><br></div><div><b>예제</b></div><div><br></div><div></div><div><img src='./10021690/a0322389_5fc8355868436.png'></div><div><br></div><div><br></div><ol><li>v<span style="vertical-align: sub;">1</span>과 가장 먼 점은 v<span style="vertical-align: sub;">2</span> 또는 v<span style="vertical-align: sub;">4</span>이다. 둘 중 아무 점을 택한다. v<span style="vertical-align: sub;">2</span>로 정해 보자.</li><li>v<span style="vertical-align: sub;">2</span>에서 가장 먼 점은 v<span style="vertical-align: sub;">3</span>이다. 이 때 거리는 6이고 동일한 거리를 가진 다른 점이 없으므로 다른 가장 먼 점을 찾아봐야 한다.</li><li>v<span style="vertical-align: sub;">3</span>에서 가장 먼 점은 v<span style="vertical-align: sub;">2</span> 또는 v<span style="vertical-align: sub;">4</span>이다. 지름인 점이 두 개이므로 f(v<span style="vertical-align: sub;">2</span>,v<span style="vertical-align: sub;">3</span>,v<span style="vertical-align: sub;">4</span>) = 7이고 이는 트리의 지름이다.</li></ol><div><br></div><div><br></div><div><br></div><div><span style="font-weight: bold;"><font style="font-size: 16pt;">참조</font></span></div><div><br></div><div><a href="https://prgms.tistory.com/32">https://prgms.tistory.com/32</a></div></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
