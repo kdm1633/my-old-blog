@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>8 Sorting in Linear Time</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2018-07-15 03:07:12</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">8 Sorting in Linear Time</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span><div style="-en-clipboard:true;"><div><br></div><div>비교정렬(comparison sort)</div><div>모든 입력 요소 사이를 비교해 순서를 정하는 정렬</div><div><br></div><div><span style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><span style="font-size: 14pt; font-weight: bold;">8.1 Lower bounds for sorting</span></span></div><hr /><div><br></div><div>가정</div><ul><li><div>모든 입력은 중복값이 없다.</div></li><li><div>모든 비교는 a(i) ≤ a(j) 형태를 취한다<span style="font-size: 12px;">.</span></div></li></ul><div><br></div><div><span style="font-weight: bold;">The decision-tree model</span></div><div><br></div><div>결정 나무(decision tree)</div><div>구성 요소 사이의 비교를 나타내는 정 이진 나무</div><div><br></div><div>정 이진 나무(full binary tree)</div><div><span style="-webkit-text-size-adjust: 100%;">자식 노드가 0개 또는 2개인 이진 나무</span></div><div><br></div><div><img src='./9979757/a0322389_5b4a3af392877.png'></div><div><br></div><div>도달가능한 나뭇잎(reachable leaf)</div><div>정렬을 수행할 때 실제로 도달할 수 있는 나뭇잎</div><div><br></div><div><span style="font-weight: bold;">A lower bound for the worst case</span></div><div><br></div><div>주어진 비교 정렬 알고리즘에 대한 비교의 최악인 경우의 수는 결정 나무의 높이와 같다.</div><div><div><br></div><table style="width: 385px;"><colgroup><col style="width: 385px;"></col></colgroup><tbody><tr><td style="border: 1px solid rgb(204, 204, 204);"><div><span style="font-weight: bold;">정리 8.1</span></div><div>비교 정렬 알고리즘은 최악인 경우에 <span style="-en-paragraph:true;">Ω(n lg n)</span>비교가 필요하다.</div></td></tr></tbody></table><div><br></div></div><div><span style="font-weight: bold;">증명</span></div><div>( n : 배열 수 , l : 나뭇잎 수, h : 높이 )</div><div>n! ≤ l ≤ <span style="float:none;"><span style="-webkit-text-stroke-width:0px;"><span style="word-spacing:0px;"><span style="widows:1;"><span style="white-space:normal;"><span style="text-transform:none;"><span style="text-indent:0px;"><span style="letter-spacing:normal;"><span>2</span></span></span></span></span></span></span></span></span><span style="-webkit-text-stroke-width:0px;"><span style="word-spacing:0px;"><span style="widows:1;"><span style="white-space:normal;"><span style="text-transform:none;"><span style="text-indent:0px;"><span style="letter-spacing:normal;"><span>h</span></span></span></span></span></span></span></span>,</div><div>h ≥ lg (n!)</div><div>&nbsp;&nbsp; = Ω(n lg n) (by eq 3.19)</div><div><br></div><div><span style="font-weight: bold;">따름정리 8.2</span></div><div>힙정렬과 병합정렬은 점근적으로 최적화된 비교 정렬이다.</div><div><br></div><div><br></div><div><br></div><div><span style="font-size: 16px; font-weight: bold;">8.2 Counting sort</span></div><hr /><div><br></div><div>가정</div><ul><li><div>입력 요소는 범위 0~k 까지의 정수로 이루어진다.</div></li><li><div>counting sort는 입력 요소 x에 대해 x보다 작은 요소 수를 결정한다.</div></li><li><div>입력 배열 A[1..n], 정렬된 출력 배열 B[1..n], 임시 배열 C[1..n]</div></li></ul><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div><span style="font-weight: bold;">COUNTING-SORT(A,B,k)</span></div><div>let C[0..k] be a new array</div><div><span style="font-weight: bold;">for</span> i = 0 <span style="font-weight: bold;">to</span> k</div><div>&nbsp;&nbsp; &nbsp;C[i] = 0</div><div><span style="font-weight: bold;">for</span> j = 1 <span style="font-weight: bold;">to</span> A.length</div><div>&nbsp;&nbsp; &nbsp;C[A[j]] = C[A[j]] + 1</div><div>// C[i] now contains the number of elements equal to i.</div><div><span style="font-weight: bold;">for</span> i = 1 <span style="font-weight: bold;">to</span> k</div><div>&nbsp;&nbsp; &nbsp;C[i] = C[i] + C[i-1]</div><div>// C[i] now contains the number of elements less than or equal to i.</div><div><span style="font-weight: bold;">for</span> j = A.length <span style="font-weight: bold;">downto</span> 1</div><div>&nbsp;&nbsp; &nbsp;B[C[A[j]]] = A[j]</div><div>&nbsp;&nbsp; &nbsp;C[A[j]] = C[A[j]] - 1</div></div><div><span style="-webkit-line-break:after-white-space;"><span style="word-wrap:break-word;">실행시간&nbsp;&nbsp; &nbsp;Θ(n)</span></span></div><div><br></div><div><span style="-webkit-line-break:after-white-space;"><span style="word-wrap:break-word;">특성</span></span></div><ul><li><div><span style="-webkit-line-break:after-white-space;"><span style="word-wrap:break-word;">안정적(stable)<span style="vertical-align: super;">1</span>이어야 한다. (입력 순서와 같이 출력 순서도 같다.)</span></span></div></li><li><div>radix sort의 subroutine으로 이용된다.</div></li></ul><div>--------------------</div><div><span style="font-size: 8pt; color: rgb(70, 70, 70);">1</span> <a href="http://stackoverflow.com/questions/1517793/stability-in-sorting-algorithms" style="font-size: 8pt;">What is "stable"?</a></div><div><br></div><div><img src='./9979757/a0322389_5b4a3b1e2a4a9.png'></div><div><br></div><div><br></div><div><br></div><div><span style="-webkit-line-break:after-white-space;"><span style="word-wrap:break-word;"><span style="font-size: 14pt; font-weight: bold;">8.3 Radix sort</span></span></span></div><hr /><div><br></div><div><img src='./9979757/a0322389_5b4a3b4d027c9.png'></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div><span style="font-weight: bold;">RADIX-SORT(A,d)</span></div><div><span style="font-weight: bold;">for</span> i = 1 <span style="font-weight: bold;">to</span> d</div><div>&nbsp;&nbsp; &nbsp;use a stable sort to sort array A on digit i</div></div><div><br></div><div><br></div><div><br></div><div><span style="font-size:16px;"><span style="font-size: 16px; font-weight: bold;">8.4 Bucket sort</span></span></div><hr /><div><br></div><div>가정</div><ul><li><div>입력은 균등 분포를 이용해 랜덤으로 생성된다.</div></li><li><div>[0,1] 구간을 가진다.</div></li><li><div>조건 - A[n] , B[0..n-1], 0 ≤ A[i] &lt; 1.</div></li></ul><div><br></div><div><img src='./9979757/a0322389_5b4a3b5af3903.png'></div><div><br></div><div style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;"><div><span style="font-weight: bold;">BUCKET-SORT(A)</span></div><div>let B[0..n-1] be a new array</div><div>n = A.length</div><div><span style="font-weight: bold;">for</span> i = 0 <span style="font-weight: bold;">to</span> n-1</div><div>&nbsp;&nbsp; &nbsp;make B[i] an empty list</div><div><span style="font-weight: bold;">for</span> i = 1 <span style="font-weight: bold;">to</span> n</div><div>&nbsp;&nbsp; &nbsp;insert A[i] into list B[nA[i]]</div><div><span style="font-weight: bold;">for</span> i = 0 <span style="font-weight: bold;">to</span> n-1</div><div>&nbsp;&nbsp; &nbsp;sort list B[i] with insertion sort</div><div>concatenate the lists B[0], B[1], ... , B[n-1] together in order</div></div></div><div>실행시간&nbsp; &nbsp; Θ(n)</div><div><br></div></span><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
