@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>자바가 unsigned 타입을 지원하지 않는 이유</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-12-22 19:05:26</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">자바가 unsigned 타입을 지원하지 않는 이유</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;"><b>"자바에서 int 는 21억이 한계라고? 이봐! C/C++은 32bit환경이라는 가정하에서 두 배인 42억 까지 가능하다고!"</b></span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">&nbsp;</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">JAVA 의 int 타입 , 그리고 C/C++같은 C 계열의 long 타입은 32bit(4Byte)의 크기를 갖는다. 그래서 일반적으로 java의 int나 c 계열의 long 타입에 저장 가능한 숫자는 2의 32승 -2,147,483,648 에서 2,147,483,647 까지이다. 하지만, JAVA 는 C 계열 언어와 다르게 unsigned type을 지원하지 않는다. 그래서 C 계열에서는 unsigned 라는 키워드를 사용해서 음수나 양수, 한쪽만 사용하게 될 경우 두 배 크기 영역까지 데이터 저장에 사용할 수 있는 반면 자바는 그렇게 할 수가 없다. 초창기 JAVA로 넘어온 사람들 중 일부는 이에 대해서 불만을 토로했다. 특히 기존 legacy 시스템과 연동해야 하거나, 이미 unsigned type들을 사용하고 있는 네트워크 프로토콜을 사용할 때, 동일한 32bit 타입임에도 long 을 int 로 바로 변환이 되지 않았기 때문에, 이런저런 적지 않은 불편함을 주었다. 왜 C 와 C++의 많은 부분을 흡수한 포스트 C++인 자바는 unsigned 타입을 지원하지 않는 걸까?</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">&nbsp;</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">공식적인 이유는 찾기가 어려운데, 적지 않은 개발자들이 signed 와 unsigned 연산으로 인한 다양한 문제(=버그)에 시달렸기에 간결한 언어를 지양하는 자바에서는 signed, unsigned 로 구분해서 사용하는 방법을 아예 제외해 버린 걸로 추측된다. 정답은 JAVA를 만든 사람에게 직접 물어보는 수 밖에.</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;"><br></span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">그런데, 마침 “자바 리포트(Java Report)*”라는 잡지, 2000년 7월에 실린 인터뷰 기사에서 이와 관련된 참고할 만한 이야기가 나온다. “C 언어 패밀리 인터뷰 (The C Family of Languages)”라고 제목 붙은 이 인터뷰에는 데니스 리치(Dennis Ritchie), 뱐 스트라우스트럽(Bjarne Stroustrup), 제임스 고슬링(James Gosling), 이렇게 셋이 참석하는데, 각각 C, C++, JAVA 의 아버지라 불리는 사람들이다.</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">가히 기념비적이라 할 수 있는 이 인터뷰에는 매우 흥미로운 이야기가 다수 등장하는데, 그 중 “간결한 언어”와 관련된 질문에 대한 대답의 일부분으로, 고슬링은 다음과 같이 이야기를 한다. “C 개발자들에게 unsigned 에 대해 한번 물어보세요. unsigned 어떻게 되고, 연산이 어떻게 이루어지는지 제대로 이해하고 있는 개발자가 거의 없다는 걸 바로 알 수 있을 겁니다” 그러면서 그는, 자바는 다른 언어들이 봉착하게 되는 다양한 경계조건들(edge cases)과 제대로 이해하는 사람이 거의 없는 것들은 포함시키지 않았다고 말했다.</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">&nbsp;</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">그리고 실제로 C 계열 최신 언어인 C#에서는 컴파일러 차원에서 unsigned와 signed 타입들간의 연산 자체를 상당히 제한하는 형태로 언어의 간결함을 추구하고 있다. &nbsp;</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">&nbsp;</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">간결함이냐, 확장성이냐? 는 오래된 주제라 여기서 논의할 내용은 아닌지라 이쯤에서 정리하기로 한다.</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">&nbsp;</span></font></p><p class="MsoNormal" style="text-align: left; margin: 0cm 0cm 0.0001pt;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">The C Family of Languages: Interview with Dennis Ritchie, Bjarne Stroustrup, and James Gosling 인터뷰 전문은 현재 여기 <a href="http://www.gotw.ca/publications/c_family_interview.htm" target="_blank">http://www.gotw.ca/publications/c_family_interview.htm</a> 에서 찾아볼 수 있다.</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;"><br></span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;"><br></span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">* 자바 리포트는 2001년 10월호를 마지막으로 폐간되었다.</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">* 기타 참조자료</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">MSDN : C# vs JAVA Data Type</span></font></p><p class="MsoNormal" style="margin: 0cm 0cm 0.0001pt; text-align: justify;"><font color="#3e3e3e" face="맑은 고딕"><span style="font-size: 13px; line-height: 19.5px;">방준영님 블로그 : <a href="http://bangjunyoung.blogspot.com/2009/05/cc-signedunsigned.html" target="_blank">http://bangjunyoung.blogspot.com/2009/05/cc-signedunsigned.html</a></span></font></p></div><div><br></div><div style="text-align: right;">출처 :&nbsp;<a href="http://blog.doortts.com/116" target="_blank">http://blog.doortts.com/116</a></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

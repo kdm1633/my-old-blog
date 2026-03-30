@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>우연수 - 하얀달</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-01-07 16:44:27</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">우연수 - 하얀달</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><br><div style="text-align: center;"><iframe width="560" height="315" src="//www.youtube.com/embed/KIn_OuCssBs" frameborder="0" allowfullscreen="" style="font-size: 9pt; line-height: 15.6000003814697px;"></iframe></div><div style="text-align: center;"><br></div><div style="text-align: center;">우연히 햄버거 가게에 들렀다가 흘러나오는 노래가 이 곡이였다.&nbsp;</div><div style="text-align: center;"><br></div><div style="text-align: center;">노래에 꽂혀서 가사를 적어 검색해보았다. 가수는 우연수이고 제목은 하얀달이였다.&nbsp;</div><div style="text-align: center;"><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div style="text-align: center;"><span style="font-size: 9pt; line-height: 15.6000003814697px;">히든싱어 이수영편에 나왔다고 한다.</span></div><div style="text-align: center;"><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div style="text-align: center;"><span style="font-size: 9pt; line-height: 15.6000003814697px;">그런데 본인 목소리는 전혀 이수영하고 닮지 않은듯.&nbsp;</span><span style="font-size: 9pt; line-height: 15.6000003814697px;">모창할 때만 비슷한가 보다.&nbsp;</span></div><div style="text-align: center;"><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div style="text-align: center;">서정적인 느낌이 마음에 든다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

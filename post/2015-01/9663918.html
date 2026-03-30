@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Chapter 4 : Divide-and-Conquer</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2015-01-28 17:47:13</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Chapter 4 : Divide-and-Conquer</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><div style="line-height: 15.6000003814697px;"><b><font size="2">분할하고 정복하기 3단계</font></b></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><blockquote><ol><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">분할하라 : 문제를 보다 더 작은 하위 문제로 분할하라<br><br></span></li><li>정복하라 : 재귀적으로 하위 문제를 풀어 정복하라. 그러나 하위 문제의 크기가 작다면 직접적인 방법으로 하위 문제를 풀어라.<br><br></li><li>조합하라 : 하위 문제에 대한 답을 원래 문제에 대한 답으로 조합하라.</li></ol></blockquote><br></div><div style="line-height: 15.6000003814697px;"><ul><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">recursive case : 하위 문제가 충분히 커서 재귀할 수 있는 경우<br><br></span></li><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">base case ( ="bottoms out") : 하위 문제가 충분히 작아 더 이상 재귀할 수 없는 경우</span></li></ul></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><font size="2" face="Arial Black"><b>Recurrences</b></font></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><ul><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">재귀는 작은 입력에 대한 값에 관한 함수를 설명하는 등식 또는 부등식이다.<br></span><br><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{120}&amp;space;(4.1)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;\begin{cases}&amp;space;\Theta&amp;space;(1)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n=1&amp;space;\\&amp;space;2T(n/2)&amp;space;+&amp;space;\Theta(n)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n%3E1&amp;space;\end{cases}" target="_blank"><img src="http://latex.codecogs.com/png.latex?\dpi{120}&amp;space;(4.1)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;\begin{cases}&amp;space;\Theta&amp;space;(1)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n=1&amp;space;\\&amp;space;2T(n/2)&amp;space;+&amp;space;\Theta(n)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n%3E1&amp;space;\end{cases}" title="" if="" n="1" 1="" /></a><br><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></li><li><span style="font-size: 9pt; line-height: 15.6000003814697px;">재귀는 항상 같은 크기를 가지진 않는다. 다양한 형태를 취할 수 있다.<br><div style="line-height: 15.6000003814697px;"><br>① T(n) = T(2n/3) + T(n/3) + Θ(n)</div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;">② T(n) = T(n-1) +&nbsp;<span style="line-height: 15.6000003814697px; font-size: 9pt;">Θ(1)<span class="Apple-tab-span" style="white-space: pre;"></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font color="#009900">// 선형탐색 식.&nbsp;</font></span><span style="line-height: 15.6000003814697px; font-size: 9pt;"><font color="#009900">Θ(1)은 재귀시 걸리는 시간이다.<br><br></font></span></div></span></li><li><div style="line-height: 15.6000003814697px;">재귀는 등식이 아닌 부등식일 수도 있다.<br><br>ex) T(n) ≤ 2T(n/2) + Θ(n) &nbsp;&nbsp;<font color="#009900">// Θ-표기 사용</font><br><br>&nbsp; &nbsp; &nbsp;T(n) ≥ 2T(n/2) + Θ(n) &nbsp;&nbsp;<font color="#009900">// Ω-표기 사용</font></div></li></ul></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><font size="2" face="Arial Black"><b>Technicalities in recurrences</b></font></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{120}&amp;space;(4.3)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;\begin{cases}&amp;space;\Theta&amp;space;(1)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n=1&amp;space;\\&amp;space;T(\left&amp;space;\lceil&amp;space;n/2&amp;space;\right&amp;space;\rceil)&amp;space;+&amp;space;T(\left&amp;space;\lfloor&amp;space;n/2&amp;space;\right&amp;space;\rfloor)&amp;space;+&amp;space;\Theta(n)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n%3E1&amp;space;\end{cases}" target="_blank"><img src="http://latex.codecogs.com/png.latex?\dpi{120}&amp;space;(4.3)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;\begin{cases}&amp;space;\Theta&amp;space;(1)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n=1&amp;space;\\&amp;space;T(\left&amp;space;\lceil&amp;space;n/2&amp;space;\right&amp;space;\rceil)&amp;space;+&amp;space;T(\left&amp;space;\lfloor&amp;space;n/2&amp;space;\right&amp;space;\rfloor)&amp;space;+&amp;space;\Theta(n)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n%3E1&amp;space;\end{cases}" title="" if="" n="1" 2="" 1="" a="" /><br></a></div><div style="line-height: 15.6000003814697px;"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{120}&amp;space;(4.3)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;\begin{cases}&amp;space;\Theta&amp;space;(1)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n=1&amp;space;\\&amp;space;T(\left&amp;space;\lceil&amp;space;n/2&amp;space;\right&amp;space;\rceil)&amp;space;+&amp;space;T(\left&amp;space;\lfloor&amp;space;n/2&amp;space;\right&amp;space;\rfloor)&amp;space;+&amp;space;\Theta(n)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n%3E1&amp;space;\end{cases}" target="_blank"><br></a></div><div style="line-height: 15.6000003814697px;"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{120}&amp;space;(4.3)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;\begin{cases}&amp;space;\Theta&amp;space;(1)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n=1&amp;space;\\&amp;space;T(\left&amp;space;\lceil&amp;space;n/2&amp;space;\right&amp;space;\rceil)&amp;space;+&amp;space;T(\left&amp;space;\lfloor&amp;space;n/2&amp;space;\right&amp;space;\rfloor)&amp;space;+&amp;space;\Theta(n)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n%3E1&amp;space;\end{cases}" target="_blank"></a></div><div style="line-height: 15.6000003814697px;">n이 홀수일 때 식 4.3을 얻는다.<br><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{120}&amp;space;(4.3)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;\begin{cases}&amp;space;\Theta&amp;space;(1)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n=1&amp;space;\\&amp;space;T(\left&amp;space;\lceil&amp;space;n/2&amp;space;\right&amp;space;\rceil)&amp;space;+&amp;space;T(\left&amp;space;\lfloor&amp;space;n/2&amp;space;\right&amp;space;\rfloor)&amp;space;+&amp;space;\Theta(n)&amp;space;&amp;&amp;space;\text{&amp;space;if&amp;space;}&amp;space;n%3E1&amp;space;\end{cases}" target="_blank"><br></a></div><div style="line-height: 15.6000003814697px;"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{120}&amp;space;(4.4)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;2T(n/2)&amp;space;+&amp;space;\Theta(n)" target="_blank"><img src="http://latex.codecogs.com/png.latex?\dpi{120}&amp;space;(4.4)&amp;space;\quad&amp;space;T(n)&amp;space;=&amp;space;2T(n/2)&amp;space;+&amp;space;\Theta(n)" title="(4.4) \quad T(n) = 2T(n/2) + \Theta(n)" /></a><br></div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;">경계 조건인 T(1)을 삭제해도 T(1)이 상수이기 때문에 답에 큰 영향을 끼치지 않는다.</div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><font color="#ff0000">※ 앞으로 재귀 문제를 풀 때 올림, 버림, 경계 조건을 생략한다. 문제가 있는지 없는지는 나중에 찾을 것이다.</font></div></div><div style="line-height: 15.6000003814697px;"><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

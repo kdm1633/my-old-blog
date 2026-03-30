@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>[], () 의미</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-12-17 04:52:22</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">[], () 의미</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span style="color: rgb(64, 64, 64); font-family: gulim, sans-serif; font-size: 12.8000001907349px; line-height: 17.6800003051758px;">[] 구간은 폐구간을 ()는 개구간을 의미</span><div><span style="color: rgb(64, 64, 64); font-family: gulim, sans-serif; font-size: 12.8000001907349px; line-height: 17.6800003051758px;"><br></span></div><div><font color="#404040" face="gulim, sans-serif"><span style="font-size: 12.8000001907349px; line-height: 17.6800003051758px;">예) [1,3]은 1,2,3 을 원소로 가지고, (1,3) 은 2를 원소로 가진다.</span></font></div><div><font color="#404040" face="gulim, sans-serif"><span style="font-size: 12.8000001907349px; line-height: 17.6800003051758px;"><br></span></font></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

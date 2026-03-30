@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>블로그에 소스 코드 Highlighter 하기</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-12-26 21:27:03</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">블로그에 소스 코드 Highlighter 하기</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div><div><div style="line-height: 15.6000003814697px;">syntax highlighter는 따로 javascript를 사용하니 이글루에는 적용을 못하고,</div><div style="line-height: 15.6000003814697px;"><br></div><div style="line-height: 15.6000003814697px;"><span style="line-height: 15.6000003814697px;">color scripter는 디자인이 마음에 안들어서 사용을 안하고 있었다.</span></div></div><div><br></div><div>그러던 차에 발견한 구세주!</div><div><br></div><a href="http://colormycode.herokuapp.com" target="_blank">http://colormycode.herokuapp.com</a><div><br></div><div>디자인이 정말 마음에 든다. 그리고 간편하게 블로그에 적용할 수 있다. 으억!! 고맙습니다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

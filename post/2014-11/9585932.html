@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>감</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">불타는 아이스크림</strong> 님 (<strong class="name">kdm1633</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2014-11-14 23:42:09</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">감</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><br></div>감이라는 것이 어쩌면 아무런 논리가 없기 때문에 쉽게 무시할 수 있다.&nbsp;<div><span style="font-size: 9pt; line-height: 15.6000003814697px;"><br></span></div><div><span style="font-size: 9pt; line-height: 15.6000003814697px;">그런데 그 감이라는 녀석 때문에 우리의 모든 문화를 이룰 수 있지 않았을까 생각해본다.</span><div><br></div><div>이성과 감성이 서로 분리된 게 아니라 합쳐질 수도 있지 않을까?</div><div><br></div><div>그렇다면 상황에 따라서도 사용이 달라질 수 있겠지.</div></div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
